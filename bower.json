@@ -1,0 +1,21 @@
+{
+  "name": "StandByWin",
+  "version": "0.1.0",
+  "homepage": "https://github.com/askcs/StandByWin",
+  "authors": [
+    "Cengiz Ulusoy <culusoy@ask-cs.com>"
+  ],
+  "description": "StandBy Windows 8+ application, made by Ask Community Systems.",
+  "keywords": [
+    "StandBy",
+    "Windows8"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

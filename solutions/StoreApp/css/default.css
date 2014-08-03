@@ -1,0 +1,30 @@
+﻿.win-listview {
+    height: 500px;
+}
+
+.win-listview .win-container {
+    height: 50px;
+}
+
+.win-listview .win-item {
+    background-color: #5888DB;
+    height: calc(100% - 20px);
+    width: calc(100% - 20px);
+    padding: 10px;
+}
+
+body, html {
+  padding: 20px;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+input[type=text], input[type=password] {
+  display:block;
+  margin-bottom:10px;
+}
+
+button {
+}
