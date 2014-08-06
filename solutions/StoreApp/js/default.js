@@ -11,13 +11,17 @@
       if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
         // TODO: This application has been newly launched. Initialize
         // your application here.
+
         // Initialize
-        require(["app/main"]);
+        require(["init"]);
+
       } else {
         // TODO: This application has been reactivated from suspension.
         // Restore application state here.
+
         // Restoring from suspension
-        require(["app/restore"]);
+        require(["restore"]);
+
       }
       args.setPromise(WinJS.UI.processAll());
     }
@@ -32,13 +36,13 @@
     // args.setPromise().
 
     // About to be suspended. 
-    require("app/suspend");
+    require("suspend");
   };
 
 
 
 
-
+  // require('init')        
 
 
   "use strict";
