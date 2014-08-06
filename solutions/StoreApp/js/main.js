@@ -6,6 +6,7 @@ requirejs.config(
     paths: {
       angular: 'lib/angular',
       'angular-route': 'lib/angular-route',
+      'angular-resource': 'lib/angular-resource',
       jquery: 'lib/jquery',
       domReady: 'lib/domReady'
     },
@@ -14,7 +15,8 @@ requirejs.config(
         deps: ['jquery'],
         exports: 'angular'
       },
-      'angular-route': { deps: ['angular'] }
+      'angular-route': { deps: ['angular'] },
+      'angular-resource': { deps: ['angular'] }
     }
   }
 );
@@ -25,11 +27,11 @@ require(
     'app',
     'domReady',
     'angular-route',
+    'angular-resource',
     'run',
     'config',
     'controllers/home',
-    'controllers/partial1',
-    'controllers/partial2',
+    'controllers/partial',
     'directives/appVersion',
     'filters/interpolate',
     'services/version',
@@ -45,18 +47,13 @@ require(
           $routeProvider
             .when('/home',
             {
-              templateUrl: 'views/home.html',
+              templateUrl: 'js/views/home.html',
               controller: 'home'
             })
-            .when('/partial1',
+            .when('/partial',
             {
-              templateUrl: 'views/partial1.html',
-              controller: 'partial1'
-            })
-            .when('/partial2',
-            {
-              templateUrl: 'views/partial2.html',
-              controller: 'partial2'
+              templateUrl: 'js/views/partial.html',
+              controller: 'partial'
             })
             .otherwise({
               redirectTo: '/home'

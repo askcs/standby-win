@@ -7,7 +7,8 @@ define(
     'services/services',
     'filters/filters',
     'directives/directives',
-    'angular-route'
+    'angular-route',
+    'angular-resource'
   ],
   function (angular) {
     return angular.module('StandBy',
@@ -16,7 +17,8 @@ define(
         'services',
         'filters',
         'directives',
-        'ngRoute'
+        'ngRoute',
+        'ngResource'
       ]);
   }
 );

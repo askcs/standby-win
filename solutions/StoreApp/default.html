@@ -9,11 +9,11 @@
   <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
 
   <link href="/css/default.css" rel="stylesheet" />
-  <script data-main="/js/main" src="/js/lib/require.js"></script>
   <script src="/js/default.js"></script>
 </head>
 <body>
-  <form name="loginForm" ng-submit="login()">
+
+  <!--<form name="loginForm" ng-submit="login()">
     <h2>Login</h2>
     <input type="text" name="username" ng-model="login.username" />
     <input type="password" name="password" ng-model="login.password" />
@@ -21,6 +21,15 @@
   </form>
   <div ng-show="login.status">
     <p>Session: {{login.session}}</p>
-  </div>
+  </div>-->
+
+  <a href="#/home">home</a> | 
+  <a href="#/partial">partial</a>
+
+  <br />
+  <br />
+  <div ng-view></div>
+
+  <script data-main="/js/main" src="/js/lib/require.js"></script>
 </body>
 </html>

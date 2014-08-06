@@ -67,8 +67,7 @@
     <Content Include="js\config.js" />
     <Content Include="js\controllers\controllers.js" />
     <Content Include="js\controllers\home.js" />
-    <Content Include="js\controllers\partial1.js" />
-    <Content Include="js\controllers\partial2.js" />
+    <Content Include="js\controllers\partial.js" />
     <Content Include="js\default.js" />
     <Content Include="css\default.css" />
     <Content Include="js\directives\appVersion.js" />
@@ -88,6 +87,8 @@
     <Content Include="js\services\services.js" />
     <Content Include="js\services\user.js" />
     <Content Include="js\services\version.js" />
+    <Content Include="js\views\partial.html" />
+    <Content Include="js\views\home.html" />
     <Content Include="screenshot.png" />
     <None Include="StoreApp_TemporaryKey.pfx" />
   </ItemGroup>

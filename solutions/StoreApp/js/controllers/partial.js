@@ -4,7 +4,7 @@ define(
   {
     'use strict';
 
-    controllers.controller ('partial1',
+    controllers.controller ('partial',
       [
         '$scope', 'User',
         function ($scope, User)
