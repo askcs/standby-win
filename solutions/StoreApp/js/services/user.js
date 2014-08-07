@@ -11,7 +11,7 @@ define(
           return {
             get: function ()
             {
-              return 'Test User';
+              return 'Cengiz!';
             }
           };
         }

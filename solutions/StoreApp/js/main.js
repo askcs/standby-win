@@ -28,13 +28,12 @@ require(
     'domReady',
     'angular-route',
     'angular-resource',
-    'run',
     'config',
+    'run',
     'controllers/home',
     'controllers/partial',
-    'directives/appVersion',
+    'directives/appInfo',
     'filters/interpolate',
-    'services/version',
     'services/user'
   ],
   function (angular, app, domReady) {
