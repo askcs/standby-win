@@ -11,7 +11,7 @@ define(
     'angular-resource'
   ],
   function (angular) {
-    return angular.module('StandBy',
+    return angular.module('StandByApp',
       [
         'controllers',
         'services',

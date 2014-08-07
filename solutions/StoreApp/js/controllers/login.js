@@ -4,21 +4,24 @@ define(
     'use strict';
 
     controllers.controller('login',
-      function ($scope, $http, User) {
+      function ($scope, $http, StandBy) {
 
         $scope.login = function () {
-          Debug.writeln('login has been asked for -> ', $scope.login.username, ' : ', $scope.login.password);
+          StandBy._('login', {
+            uuid: $scope.login.username,
+            pass: MD5.parse($scope.login.password)
+          }).then(function (loggedIn) {
+            $http.defaults.headers.common['X-SESSION_ID'] = loggedIn['X-SESSION_ID'];
 
-          User.login(
-            'devcengiz',
-            'eadeb77d8fba90b42b32b7de13e8aaa6'
-          ).then(
-            function (loggedIn) {
-              $http.defaults.headers.common['X-SESSION_ID'] = loggedIn['X-SESSION_ID'];
+            $scope.login.session = loggedIn['X-SESSION_ID'];
 
-              $scope.login.session = loggedIn['X-SESSION_ID'];
-            }
-          );
+            StandBy._('resources')
+            .then(function (resources) {
+              if (resources) {
+                $scope.resources = angular.toJson(resources);
+              }
+            })
+          });
 
           $scope.login.status = true;
         }

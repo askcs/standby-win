@@ -31,11 +31,12 @@ require(
     'config',
     'run',
     'controllers/login',
-    'services/user'
+    'services/standby',
+    'lib/md5'
   ],
   function (angular, app, domReady) {
     'use strict';
 
-    domReady(function () { angular.bootstrap(document, ['StandBy']) });
+    domReady(function () { angular.bootstrap(document, ['StandByApp']) });
   }
 );

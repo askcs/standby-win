@@ -19,8 +19,13 @@
     <input type="text" name="username" ng-model="login.username" />
     <input type="password" name="password" ng-model="login.password" />
     <button type="submit">Login</button>
+
     <div ng-show="login.status">
       <p>Session: {{login.session}}</p>
+    </div>
+
+    <div ng-show="resources">
+      <p>Resources: {{resources}}</p>
     </div>
   </form>
 

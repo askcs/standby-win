@@ -77,12 +77,13 @@
     <Content Include="js\lib\angular.js" />
     <Content Include="js\lib\domReady.js" />
     <Content Include="js\lib\jquery.js" />
+    <Content Include="js\lib\md5.js" />
     <Content Include="js\lib\require.js" />
     <Content Include="js\app.js" />
     <Content Include="js\main.js" />
     <Content Include="js\run.js" />
     <Content Include="js\services\services.js" />
-    <Content Include="js\services\user.js" />
+    <Content Include="js\services\standby.js" />
     <Content Include="screenshot.png" />
     <None Include="StoreApp_TemporaryKey.pfx" />
   </ItemGroup>
