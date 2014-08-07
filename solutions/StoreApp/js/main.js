@@ -30,36 +30,11 @@ require(
     'angular-resource',
     'config',
     'run',
-    'controllers/home',
-    'controllers/partial',
-    'directives/appInfo',
-    'filters/interpolate',
+    'controllers/login',
     'services/user'
   ],
   function (angular, app, domReady) {
     'use strict';
-
-    app.config(
-      [
-        '$routeProvider',
-        function ($routeProvider) {
-          $routeProvider
-            .when('/home',
-            {
-              templateUrl: 'js/views/home.html',
-              controller: 'home'
-            })
-            .when('/partial',
-            {
-              templateUrl: 'js/views/partial.html',
-              controller: 'partial'
-            })
-            .otherwise({
-              redirectTo: '/home'
-            });
-        }
-      ]
-    );
 
     domReady(function () { angular.bootstrap(document, ['StandBy']) });
   }

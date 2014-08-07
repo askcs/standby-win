@@ -13,26 +13,16 @@
 </head>
 <body>
 
-  <!--<form name="loginForm" ng-submit="login()">
+  <h1>StandBy</h1>
+  <form name="loginForm" ng-controller="login" ng-submit="login()">
     <h2>Login</h2>
     <input type="text" name="username" ng-model="login.username" />
     <input type="password" name="password" ng-model="login.password" />
     <button type="submit">Login</button>
+    <div ng-show="login.status">
+      <p>Session: {{login.session}}</p>
+    </div>
   </form>
-  <div ng-show="login.status">
-    <p>Session: {{login.session}}</p>
-  </div>-->
-
-  <a href="#/home">home</a> | 
-  <a href="#/partial">partial</a>
-
-  <br />
-  <br />
-  <div data-ng-view></div>
-
-  <br />
-  <br />
-  <div data-app-info></div>
 
   <script data-main="/js/main" src="/js/lib/require.js"></script>
 </body>

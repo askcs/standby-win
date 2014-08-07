@@ -66,14 +66,11 @@
     <Content Include="images\storelogo.scale-100.png" />
     <Content Include="js\config.js" />
     <Content Include="js\controllers\controllers.js" />
-    <Content Include="js\controllers\home.js" />
-    <Content Include="js\controllers\partial.js" />
+    <Content Include="js\controllers\login.js" />
     <Content Include="js\default.js" />
     <Content Include="css\default.css" />
-    <Content Include="js\directives\appInfo.js" />
     <Content Include="js\directives\directives.js" />
     <Content Include="js\filters\filters.js" />
-    <Content Include="js\filters\interpolate.js" />
     <Content Include="js\lib\angular-locale_nl-nl.js" />
     <Content Include="js\lib\angular-resource.js" />
     <Content Include="js\lib\angular-route.js" />
@@ -86,8 +83,6 @@
     <Content Include="js\run.js" />
     <Content Include="js\services\services.js" />
     <Content Include="js\services\user.js" />
-    <Content Include="js\views\partial.html" />
-    <Content Include="js\views\home.html" />
     <Content Include="screenshot.png" />
     <None Include="StoreApp_TemporaryKey.pfx" />
   </ItemGroup>
