@@ -19,25 +19,18 @@
         ng-submit="login()"
         style="display:none">
     <h2>Login</h2>
-    <input type="text" name="username" ng-model="login.username" />
-    <input type="password" name="password" ng-model="login.password" />
+    <input type="text" name="username" ng-model="loginData.username" />
+    <input type="password" name="password" ng-model="loginData.password" />
     <button type="submit">Login</button>
 
-    <div ng-show="login.status">
-      <p>Session: {{login.session}}</p>
+    <div ng-show="loginData.session">
+      <p>Session: {{loginData.session}}</p>
     </div>
 
     <div ng-show="resources">
       <p>Resources: {{resources}}</p>
     </div>
   </form>
-
-  <win-nav-bar>
-    <win-nav-bar-container>
-      <win-nav-bar-command label="'Home'" icon="'home'" tooltip="'Go home!!'"></win-nav-bar-command>
-      <win-nav-bar-command label="'Save'" icon="'save'"></win-nav-bar-command>
-    </win-nav-bar-container>
-  </win-nav-bar>
 
   <script data-main="/js/main" src="/js/lib/require.js"></script>
 </body>

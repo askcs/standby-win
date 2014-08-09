@@ -1,22 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "Windows", "solutions\StoreApp\Windows.jsproj", "{C0043990-A159-4196-8764-7347DDC8D54C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StoreApp", "StoreApp", "{F60E53E6-6F10-4A54-8723-4696D0C472B9}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "StoreApp.Shared", "solutions\StoreApp.Shared\StoreApp.Shared.shproj", "{DC82DB73-66EB-4D49-B950-C05C4B7EA95D}"
-EndProject
-Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "WindowsPhone", "solutions\StoreApp.WindowsPhone\WindowsPhone.jsproj", "{8A099C80-A0D6-48B3-9AF3-79D587F6297E}"
-EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		solutions\StoreApp.Shared\StoreApp.Shared.projitems*{c0043990-a159-4196-8764-7347ddc8d54c}*SharedItemsImports = 5
-		solutions\StoreApp.Shared\StoreApp.Shared.projitems*{8a099c80-a0d6-48b3-9af3-79d587f6297e}*SharedItemsImports = 5
-		solutions\StoreApp.Shared\StoreApp.Shared.projitems*{dc82db73-66eb-4d49-b950-c05c4b7ea95d}*SharedItemsImports = 13
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|ARM = Debug|ARM
@@ -52,33 +41,8 @@ Global
 		{C0043990-A159-4196-8764-7347DDC8D54C}.Release|x86.ActiveCfg = Release|x86
 		{C0043990-A159-4196-8764-7347DDC8D54C}.Release|x86.Build.0 = Release|x86
 		{C0043990-A159-4196-8764-7347DDC8D54C}.Release|x86.Deploy.0 = Release|x86
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Debug|ARM.ActiveCfg = Debug|ARM
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Debug|ARM.Build.0 = Debug|ARM
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Debug|ARM.Deploy.0 = Debug|ARM
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Debug|x86.ActiveCfg = Debug|x86
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Debug|x86.Build.0 = Debug|x86
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Debug|x86.Deploy.0 = Debug|x86
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Release|ARM.ActiveCfg = Release|ARM
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Release|ARM.Build.0 = Release|ARM
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Release|ARM.Deploy.0 = Release|ARM
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Release|x64.ActiveCfg = Release|Any CPU
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Release|x86.ActiveCfg = Release|x86
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Release|x86.Build.0 = Release|x86
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{C0043990-A159-4196-8764-7347DDC8D54C} = {F60E53E6-6F10-4A54-8723-4696D0C472B9}
-		{DC82DB73-66EB-4D49-B950-C05C4B7EA95D} = {F60E53E6-6F10-4A54-8723-4696D0C472B9}
-		{8A099C80-A0D6-48B3-9AF3-79D587F6297E} = {F60E53E6-6F10-4A54-8723-4696D0C472B9}
 	EndGlobalSection
 EndGlobal
