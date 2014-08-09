@@ -53,11 +53,6 @@
     <PackageCertificateThumbprint>CDD2307D8960B3C333897B9ADE5AC51ADC9247DF</PackageCertificateThumbprint>
   </PropertyGroup>
   <ItemGroup>
-  <!-- <ItemGroup>
-    <Content Include="js\angular-winjs.js" />
-    <None Include="angular-winjs_TemporaryKey.pfx" />
-  </ItemGroup> -->
-  <ItemGroup>
     <SDKReference Include="Microsoft.WinJS.2.0, Version=1.0" />
   </ItemGroup>
   <ItemGroup>
