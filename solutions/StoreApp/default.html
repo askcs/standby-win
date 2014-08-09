@@ -14,7 +14,10 @@
 <body>
 
   <h1>StandBy</h1>
-  <form name="loginForm" ng-controller="login" ng-submit="login()">
+  <form name="loginForm" 
+        ng-controller="login" 
+        ng-submit="login()"
+        style="display:none">
     <h2>Login</h2>
     <input type="text" name="username" ng-model="login.username" />
     <input type="password" name="password" ng-model="login.password" />
@@ -28,6 +31,13 @@
       <p>Resources: {{resources}}</p>
     </div>
   </form>
+
+  <win-nav-bar>
+    <win-nav-bar-container>
+      <win-nav-bar-command label="'Home'" icon="'home'" tooltip="'Go home!!'"></win-nav-bar-command>
+      <win-nav-bar-command label="'Save'" icon="'save'"></win-nav-bar-command>
+    </win-nav-bar-container>
+  </win-nav-bar>
 
   <script data-main="/js/main" src="/js/lib/require.js"></script>
 </body>

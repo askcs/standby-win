@@ -8,6 +8,8 @@
         '$rootScope', '$location',
         function ($rootScope, $location) {
 
+          angular.element('form').css({display: 'block'});
+
           $rootScope.$on('$routeChangeStart', function (event, next, current) {
             //Debug.writeln(
             //  'Route change started! -- ',

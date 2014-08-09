@@ -8,7 +8,8 @@ define(
     'filters/filters',
     'directives/directives',
     'angular-route',
-    'angular-resource'
+    'angular-resource',
+    'angular-winjs'
   ],
   function (angular) {
     return angular.module('StandByApp',
@@ -18,7 +19,8 @@ define(
         'filters',
         'directives',
         'ngRoute',
-        'ngResource'
+        'ngResource',
+        'winjs'
       ]);
   }
 );
