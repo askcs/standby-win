@@ -89,6 +89,12 @@
     <Content Include="scripts\vendors\angular-route\angular-route.min.js.map" />
     <Content Include="scripts\vendors\angular-route\bower.json" />
     <Content Include="scripts\vendors\angular-route\README.md" />
+    <Content Include="scripts\vendors\angular-sanitize\.bower.json" />
+    <Content Include="scripts\vendors\angular-sanitize\angular-sanitize.js" />
+    <Content Include="scripts\vendors\angular-sanitize\angular-sanitize.min.js" />
+    <Content Include="scripts\vendors\angular-sanitize\angular-sanitize.min.js.map" />
+    <Content Include="scripts\vendors\angular-sanitize\bower.json" />
+    <Content Include="scripts\vendors\angular-sanitize\README.md" />
     <Content Include="scripts\vendors\angular-winjs\js\angular-winjs.js" />
     <Content Include="scripts\vendors\angular\.bower.json" />
     <Content Include="scripts\vendors\angular\angular-csp.css" />

@@ -9,6 +9,7 @@ define(
     'directives/directives',
     'angular-route',
     'angular-resource',
+    'angular-sanitize',
     'angular-winjs',
     'angular-md5'
   ],
@@ -21,6 +22,7 @@ define(
         'directives',
         'ngRoute',
         'ngResource',
+        'ngSanitize',
         'winjs',
         'ngMd5'
       ]);

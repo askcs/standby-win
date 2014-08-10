@@ -10,6 +10,7 @@ requirejs.config(
       'angular-route': 'lib/angular-route',
       'angular-resource': 'vendors/angular-resource/angular-resource',
       'angular-route': 'vendors/angular-route/angular-route',
+      'angular-sanitize': 'vendors/angular-sanitize/angular-sanitize',
       'angular-winjs': 'vendors/angular-winjs/js/angular-winjs',
       'angular-md5': 'vendors/angular-md5/angular-md5'
     },
@@ -20,6 +21,7 @@ requirejs.config(
       },
       'angular-route': { deps: ['angular'] },
       'angular-resource': { deps: ['angular'] },
+      'angular-sanitize': { deps: ['angular'] },
       'angular-winjs': { deps: ['angular'] },
       'angular-md5': { deps: ['angular'] }
     }
