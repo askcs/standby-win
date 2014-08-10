@@ -1,0 +1,31 @@
+{
+  "name": "angular-winjs",
+  "version": "1.0.0",
+  "homepage": "https://github.com/codemonkeychris/angular-winjs",
+  "authors": [
+    "Josh Williams <spankyj@gmail.com>"
+  ],
+  "description": "Project to smooth the AngularJS/WinJS interaction, this code is a shim layer which facilitates usage of WinJS UI controls in an Angular Windows application.",
+  "main": "js/angular-winjs.js",
+  "keywords": [
+    "winjs",
+    "angular"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.0",
+    "commit": "d6413c02c27e6bde151f404b6170fe3bd257ed73"
+  },
+  "_source": "git://github.com/codemonkeychris/angular-winjs.git",
+  "_target": "~1.0.0",
+  "_originalSource": "angular-winjs"
+}

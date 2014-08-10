@@ -4,12 +4,14 @@ requirejs.config(
   {
     baseUrl: '/scripts',
     paths: {
-      jquery: 'lib/jquery',
-      angular: 'lib/angular',
+      domReady: 'vendors/requirejs-domready/domReady',
+      jquery: 'vendors/jquery/dist/jquery',
+      angular: 'vendors/angular/angular',
       'angular-route': 'lib/angular-route',
-      'angular-resource': 'lib/angular-resource',
-      'angular-winjs': 'lib/angular-winjs',
-      domReady: 'lib/domReady'
+      'angular-resource': 'vendors/angular-resource/angular-resource',
+      'angular-route': 'vendors/angular-route/angular-route',
+      'angular-winjs': 'vendors/angular-winjs/js/angular-winjs',
+      'angular-md5': 'vendors/angular-md5/angular-md5'
     },
     shim: {
       angular: {
@@ -18,7 +20,8 @@ requirejs.config(
       },
       'angular-route': { deps: ['angular'] },
       'angular-resource': { deps: ['angular'] },
-      'angular-winjs': { deps: ['angular'] }
+      'angular-winjs': { deps: ['angular'] },
+      'angular-md5': { deps: ['angular'] }
     }
   }
 );
@@ -28,18 +31,16 @@ require(
     'angular',
     'app',
     'domReady',
-    'angular-route',
-    'angular-resource',
-    'angular-winjs',
     'config',
     'run',
     'controllers/login',
-    'services/standby',
-    'lib/md5'
+    'services/standby'
   ],
   function (angular, app, domReady) {
     'use strict';
 
-    domReady(function () { angular.bootstrap(document, ['StandByApp']) });
+    domReady(function () {
+      angular.bootstrap(document, ['StandByApp']);
+    });
   }
 );

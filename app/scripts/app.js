@@ -9,7 +9,8 @@ define(
     'directives/directives',
     'angular-route',
     'angular-resource',
-    'angular-winjs'
+    'angular-winjs',
+    'angular-md5'
   ],
   function (angular) {
     return angular.module('StandByApp',
@@ -20,7 +21,8 @@ define(
         'directives',
         'ngRoute',
         'ngResource',
-        'winjs'
+        'winjs',
+        'ngMd5'
       ]);
   }
 );
