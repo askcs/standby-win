@@ -64,7 +64,6 @@
     <Content Include="scripts\config.js" />
     <Content Include="scripts\controllers\controllers.js" />
     <Content Include="scripts\controllers\login.js" />
-    <Content Include="scripts\default.js" />
     <Content Include="scripts\vendors\angular-md5\.bower.json" />
     <Content Include="scripts\vendors\angular-md5\angular-md5.js" />
     <Content Include="scripts\vendors\angular-md5\angular-md5.min.js" />
