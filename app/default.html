@@ -1,20 +1,40 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="StandByApp">
 <head>
   <meta charset="utf-8" />
+
   <title>StandBy</title>
 
   <link href="//Microsoft.WinJS.2.0/css/ui-light.css" rel="stylesheet" />
   <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
   <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
 
+  <script src="scripts/data.js"></script>
+  <script src="scripts/navigator.js"></script>
+
+  <script src="scripts/vendors/jquery/dist/jquery.js"></script>
+  <script src="scripts/vendors/angular/angular.js"></script>
+  <script src="scripts/vendors/angular-resource/angular-resource.js"></script>
+  <script src="scripts/vendors/angular-sanitize/angular-sanitize.js"></script>
+  <script src="scripts/vendors/angular-winjs/js/angular-winjs.js"></script>
+  <script src="scripts/vendors/angular-md5/angular-md5.js"></script>
+
+  <script src="scripts/services/listView.js"></script>
+
+  <script src="scripts/app.js"></script>
+  <script src="scripts/config.js"></script>
+  <script src="scripts/services/standby.js"></script>
+  <script src="scripts/run.js"></script>
+  <script src="scripts/controllers/login.js"></script>
+  <script src="scripts/controllers/groupDetailCtrl.js"></script>
+
   <link href="/styles/default.css" rel="stylesheet" />
 </head>
 <body>
 
   <h1>StandBy</h1>
-  <form name="loginForm" 
-        ng-controller="login" 
+  <form name="loginForm"
+        ng-controller="login"
         ng-submit="login()"
         style="display:none">
     <h2>Login</h2>
@@ -31,6 +51,16 @@
     </div>
   </form>
 
-  <script data-main="/scripts/main" src="/scripts/vendors/requirejs/require.js"></script>
+  <div id="contenthost"
+       data-win-control="Application.PageControlNavigator"
+       data-win-options="{home: '/pages/groupedItems/groupedItems.html'}">
+  </div>
+
+  <div id="appbar"
+       data-win-control="WinJS.UI.AppBar">
+    <button data-win-control="WinJS.UI.AppBarCommand"
+            data-win-options="{id:'cmd', label:'Command', icon:'placeholder'}"
+            type="button"></button>
+  </div>
 </body>
 </html>
