@@ -22,10 +22,8 @@
     "jquery": "~2.1.1",
     "angular": "~1.2.21",
     "angular-resource": "~1.2.21",
-    "requirejs-domready": "~2.0.1",
     "angular-winjs": "~1.0.0",
     "angular-md5": "~0.1.7",
-    "requirejs": "~2.1.14",
-    "angular-route": "~1.2.21"
+    "angular-sanitize": "~1.2.21"
   }
 }
