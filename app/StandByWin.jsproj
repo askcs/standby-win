@@ -71,7 +71,6 @@
     <Content Include="pages\itemDetail\itemDetail.html" />
     <Content Include="pages\itemDetail\itemDetail.js" />
     <Content Include="scripts\config.js" />
-    <Content Include="scripts\controllers\controllers.js" />
     <Content Include="scripts\controllers\groupDetailCtrl.js" />
     <Content Include="scripts\controllers\login.js" />
     <Content Include="scripts\data.js" />
@@ -96,12 +95,6 @@
     <Content Include="scripts\vendors\angular-resource\angular-resource.min.js.map" />
     <Content Include="scripts\vendors\angular-resource\bower.json" />
     <Content Include="scripts\vendors\angular-resource\README.md" />
-    <Content Include="scripts\vendors\angular-route\.bower.json" />
-    <Content Include="scripts\vendors\angular-route\angular-route.js" />
-    <Content Include="scripts\vendors\angular-route\angular-route.min.js" />
-    <Content Include="scripts\vendors\angular-route\angular-route.min.js.map" />
-    <Content Include="scripts\vendors\angular-route\bower.json" />
-    <Content Include="scripts\vendors\angular-route\README.md" />
     <Content Include="scripts\vendors\angular-sanitize\.bower.json" />
     <Content Include="scripts\vendors\angular-sanitize\angular-sanitize.js" />
     <Content Include="scripts\vendors\angular-sanitize\angular-sanitize.min.js" />
@@ -206,28 +199,19 @@
     <Content Include="scripts\vendors\jquery\src\var\support.js" />
     <Content Include="scripts\vendors\jquery\src\var\toString.js" />
     <Content Include="scripts\vendors\jquery\src\wrap.js" />
-    <Content Include="scripts\vendors\requirejs-domready\.bower.json" />
-    <Content Include="scripts\vendors\requirejs-domready\domReady.js" />
-    <Content Include="scripts\vendors\requirejs-domready\LICENSE" />
-    <Content Include="scripts\vendors\requirejs-domready\package.json" />
-    <Content Include="scripts\vendors\requirejs-domready\README.md" />
-    <Content Include="scripts\vendors\requirejs\.bower.json" />
-    <Content Include="scripts\vendors\requirejs\bower.json" />
-    <Content Include="scripts\vendors\requirejs\README.md" />
-    <Content Include="scripts\vendors\requirejs\require.js" />
     <Content Include="styles\default.css" />
-    <Content Include="scripts\directives\directives.js" />
-    <Content Include="scripts\filters\filters.js" />
     <Content Include="scripts\app.js" />
-    <Content Include="scripts\main.js" />
     <Content Include="scripts\run.js" />
-    <Content Include="scripts\services\services.js" />
     <Content Include="scripts\services\standby.js" />
     <Content Include="screenshot.png" />
     <None Include="StoreApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.WinJS.2.0, Version=1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="scripts\directives\" />
+    <Folder Include="scripts\filters\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below then uncomment
