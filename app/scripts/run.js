@@ -45,15 +45,19 @@ StandByApp.run(function ($rootScope, $location, $compile, $timeout) {
   var nav = WinJS.Navigation;
 
   app.addEventListener("activated", function (args) {
-    Debug.writeln('App is gonna start!');
+    
 
     if (args.detail.kind === activation.ActivationKind.launch) {
       if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
         // TODO: This application has been newly launched. Initialize
         // your application here.
+
+        Debug.writeln('App is gonna start for the first time!');
       } else {
         // TODO: This application has been reactivated from suspension.
         // Restore application state here.
+
+        Debug.writeln('App is resumed!');
       }
 
 
@@ -63,12 +67,21 @@ StandByApp.run(function ($rootScope, $location, $compile, $timeout) {
       }
       args.setPromise(WinJS.UI.processAll().then(function () {
 
+        
         if (nav.location) {
           nav.history.current.initialPlaceholder = true;
           return nav.navigate(nav.location, nav.state);
         } else {
           return nav.navigate(Application.navigator.home);
         }
+        
+
+
+        $rootScope.navigateTo = function () {
+          
+        }
+
+
       }));
     }
 
@@ -88,7 +101,10 @@ StandByApp.run(function ($rootScope, $location, $compile, $timeout) {
     // complete an asynchronous operation before your application is 
     // suspended, call args.setPromise().
     app.sessionState.history = nav.history;
+
+    Debug.writeln('Saving data on checkpoint');
   };
+
 
 
 

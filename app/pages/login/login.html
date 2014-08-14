@@ -32,17 +32,15 @@
 </head>
 <body>
 
-  <!--<h1>StandBy</h1>
+  <h1>StandBy</h1>
   <form name="loginForm"
         ng-controller="login"
-        ng-submit="login()"
-        style="display:none">
+        ng-submit="login()">
+        <!--style="display:none">-->
     <h2>Login</h2>
     <input type="text" name="username" ng-model="loginData.username" />
     <input type="password" name="password" ng-model="loginData.password" />
     <button type="submit">Login</button>
-
-    <button type="button" ng-click="navigateTo()">Navigate</button>
 
     <div ng-show="loginData.session">
       <p>Session: {{loginData.session}}</p>
@@ -51,19 +49,6 @@
     <div ng-show="resources">
       <p>Resources: {{resources}}</p>
     </div>
-  </form>-->
-
-  <div id="contenthost"
-       data-win-control="Application.PageControlNavigator"
-       data-win-options="{home: '/pages/login/login.html'}">
-  </div>
-
-  <div id="appbar"
-       data-win-control="WinJS.UI.AppBar">
-    <button data-win-control="WinJS.UI.AppBarCommand"
-            data-win-options="{id:'cmd', label:'Command', icon:'placeholder'}"
-            type="button"></button>
-  </div>
-
+  </form>
 </body>
 </html>

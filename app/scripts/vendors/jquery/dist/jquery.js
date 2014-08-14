@@ -1213,9 +1213,10 @@ setDocument = Sizzle.setDocument = function( node ) {
 				rbuggyQSA.push( ":enabled", ":disabled" );
 			}
 
-			// Opera 10-11 does not throw on post-comma invalid pseudos
-			div.querySelectorAll("*,:x");
-			rbuggyQSA.push(",.*:");
+		  // Opera 10-11 does not throw on post-comma invalid pseudos
+      // CHECK
+			// div.querySelectorAll("*,:x");
+			// srbuggyQSA.push(",.*:");
 		});
 	}
 
@@ -1232,8 +1233,9 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 			// This should fail with an exception
 			// Gecko does not error, returns false instead
-			matches.call( div, "[s!='']:x" );
-			rbuggyMatches.push( "!=", pseudos );
+      // CHECK
+			// matches.call(div, "[s!='']:x");
+			// rbuggyMatches.push( "!=", pseudos );
 		});
 	}
 

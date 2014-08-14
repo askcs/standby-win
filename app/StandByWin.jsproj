@@ -70,6 +70,7 @@
     <Content Include="pages\itemDetail\itemDetail.css" />
     <Content Include="pages\itemDetail\itemDetail.html" />
     <Content Include="pages\itemDetail\itemDetail.js" />
+    <Content Include="pages\login\login.html" />
     <Content Include="scripts\config.js" />
     <Content Include="scripts\controllers\groupDetailCtrl.js" />
     <Content Include="scripts\controllers\login.js" />
@@ -208,10 +209,6 @@
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.WinJS.2.0, Version=1.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="scripts\directives\" />
-    <Folder Include="scripts\filters\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below then uncomment
