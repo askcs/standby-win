@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+
+<h1>StandBy</h1>
+<form name="loginForm"
+      ng-controller="loginCtrl"
+      ng-submit="login()"
+      style="display:none">
+  <h2>Login</h2>
+  <input type="text" name="username" data-ng-model="loginData.username" />
+  <input type="password" name="password" data-ng-model="loginData.password" />
+  <button type="submit">Login</button>
+
+  <div data-ng-show="loginData.session">
+    <p>Session: {{loginData.session}}</p>
+  </div>
+
+  <div data-ng-show="resources">
+    <p>Resources: {{resources}}</p>
+  </div>
+</form>

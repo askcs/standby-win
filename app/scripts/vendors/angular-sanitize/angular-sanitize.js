@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.2.21
+ * @license AngularJS v1.2.22
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -237,6 +237,13 @@ function makeMap(str) {
  * @param {object} handler
  */
 function htmlParser( html, handler ) {
+  if (typeof html !== 'string') {
+    if (html === null || typeof html === 'undefined') {
+      html = '';
+    } else {
+      html = '' + html;
+    }
+  }
   var index, chars, match, stack = [], last = html, text;
   stack.last = function() { return stack[ stack.length - 1 ]; };
 
@@ -393,9 +400,7 @@ function decodeEntities(value) {
   var spaceAfter = parts[3];
   var content = parts[2];
   if (content) {
-    MSApp.execUnsafeLocalFunction(function () {
-      hiddenPre.innerHTML = content.replace(/</g, "&lt;");
-    });
+    hiddenPre.innerHTML=content.replace(/</g,"&lt;");
     // innerText depends on styling as it doesn't display hidden elements.
     // Therefore, it's better to use textContent not to cause unnecessary
     // reflows. However, IE<9 don't support textContent so the innerText

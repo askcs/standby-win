@@ -11,6 +11,7 @@
 
   <script src="scripts/vendors/jquery/dist/jquery.js"></script>
   <script src="scripts/vendors/angular/angular.js"></script>
+  <script src="scripts/vendors/angular-route/angular-route.js"></script>
   <script src="scripts/vendors/angular-resource/angular-resource.js"></script>
   <script src="scripts/vendors/angular-sanitize/angular-sanitize.js"></script>
   <script src="scripts/vendors/angular-winjs/js/angular-winjs.js"></script>
@@ -25,24 +26,12 @@
 </head>
 <body>
 
-  <h1>StandBy</h1>
-  <form name="loginForm"
-        ng-controller="loginCtrl"
-        ng-submit="login()"
-        style="display:none">
-    <h2>Login</h2>
-    <input type="text" name="username" data-ng-model="loginData.username" />
-    <input type="password" name="password" data-ng-model="loginData.password" />
-    <button type="submit">Login</button>
+  <a href="#/login">login</a> | <a href="#/dashboard">dashboard</a>
 
-    <div data-ng-show="loginData.session">
-      <p>Session: {{loginData.session}}</p>
-    </div>
+  <br />
+  <br />
 
-    <div data-ng-show="resources">
-      <p>Resources: {{resources}}</p>
-    </div>
-  </form>
+  <div ng-view></div>
 
 </body>
 </html>

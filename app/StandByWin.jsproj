@@ -62,7 +62,6 @@
     <Content Include="images\splashscreen.scale-100.png" />
     <Content Include="images\storelogo.scale-100.png" />
     <Content Include="README.md" />
-    <Content Include="scripts\app.js" />
     <Content Include="scripts\config.js" />
     <Content Include="scripts\controllers\login.js" />
     <Content Include="scripts\vendors\angular-md5\.bower.json" />
@@ -84,6 +83,12 @@
     <Content Include="scripts\vendors\angular-resource\angular-resource.min.js.map" />
     <Content Include="scripts\vendors\angular-resource\bower.json" />
     <Content Include="scripts\vendors\angular-resource\README.md" />
+    <Content Include="scripts\vendors\angular-route\.bower.json" />
+    <Content Include="scripts\vendors\angular-route\angular-route.js" />
+    <Content Include="scripts\vendors\angular-route\angular-route.min.js" />
+    <Content Include="scripts\vendors\angular-route\angular-route.min.js.map" />
+    <Content Include="scripts\vendors\angular-route\bower.json" />
+    <Content Include="scripts\vendors\angular-route\README.md" />
     <Content Include="scripts\vendors\angular-sanitize\.bower.json" />
     <Content Include="scripts\vendors\angular-sanitize\angular-sanitize.js" />
     <Content Include="scripts\vendors\angular-sanitize\angular-sanitize.min.js" />
@@ -192,6 +197,8 @@
     <Content Include="scripts\default.js" />
     <Content Include="scripts\services\standby.js" />
     <Content Include="screenshot.png" />
+    <Content Include="views\dashboard.html" />
+    <Content Include="views\login.html" />
     <None Include="StoreApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

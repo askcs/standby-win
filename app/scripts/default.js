@@ -1,6 +1,14 @@
 ﻿'use strict';
 
-var StandByApp = angular.module('StandByApp', ['ngResource', 'ngSanitize', 'winjs', 'ngMd5']);
+var StandByApp = angular.module('StandByApp', ['ngRoute', 'ngResource', 'ngSanitize', 'winjs', 'ngMd5']);
+
+StandByApp.config(['$routeProvider', function ($routeProvider) {
+  $routeProvider
+    .when('/login', {templateUrl: 'views/login.html', controller: 'loginCtrl'})
+    .when('/dashboard', {templateUrl: 'views/dashboard.html', controller: 'loginCtrl'})
+    .otherwise({redirectTo: '/login'});
+}
+]);
 
 StandByApp.run(function ($rootScope, $location, $compile, $timeout) {
   angular.element('form').css({ display: 'block' });
@@ -22,7 +30,7 @@ StandByApp.run(function ($rootScope, $location, $compile, $timeout) {
   var app = WinJS.Application;
   var activation = Windows.ApplicationModel.Activation;
 
-  app.addEventListener("activated", function (args) {    
+  app.addEventListener("activated", function (args) {
 
     if (args.detail.kind === activation.ActivationKind.launch) {
       if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
@@ -31,7 +39,7 @@ StandByApp.run(function ($rootScope, $location, $compile, $timeout) {
         Debug.writeln('App is has been reactivated from suspension!');
       }
 
-      args.setPromise(WinJS.UI.processAll().then(function () { 
+      args.setPromise(WinJS.UI.processAll().then(function () {
         Debug.writeln('All UI processers are done!');
       }));
     }
