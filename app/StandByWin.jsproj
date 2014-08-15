@@ -63,7 +63,8 @@
     <Content Include="images\storelogo.scale-100.png" />
     <Content Include="README.md" />
     <Content Include="scripts\config.js" />
-    <Content Include="scripts\controllers\login.js" />
+    <Content Include="scripts\controllers\dashboardCtrl.js" />
+    <Content Include="scripts\controllers\loginCtrl.js" />
     <Content Include="scripts\vendors\angular-md5\.bower.json" />
     <Content Include="scripts\vendors\angular-md5\angular-md5.js" />
     <Content Include="scripts\vendors\angular-md5\angular-md5.min.js" />

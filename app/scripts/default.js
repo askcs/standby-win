@@ -5,7 +5,7 @@ var StandByApp = angular.module('StandByApp', ['ngRoute', 'ngResource', 'ngSanit
 StandByApp.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
     .when('/login', {templateUrl: 'views/login.html', controller: 'loginCtrl'})
-    .when('/dashboard', {templateUrl: 'views/dashboard.html', controller: 'loginCtrl'})
+    .when('/dashboard', {templateUrl: 'views/dashboard.html', controller: 'dashboardCtrl'})
     .otherwise({redirectTo: '/login'});
 }
 ]);
@@ -14,15 +14,15 @@ StandByApp.run(function ($rootScope, $location, $compile, $timeout) {
   angular.element('form').css({ display: 'block' });
 
   $rootScope.$on('$routeChangeStart', function (event, next, current) {
-    Debug.writeln('Route change started! -- ', angular.toJson(event), ' -- ', angular.toJson(next), ' -- ', angular.toJson(current));
+    // Debug.writeln('Route change started! -- ', angular.toJson(event), ' -- ', angular.toJson(next), ' -- ', angular.toJson(current));
   });
 
   $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
-    Debug.writeln('Route changed successfully! -- ', angular.toJson(event), ' -- ', angular.toJson(current), ' -- ', angular.toJson(previous));
+    // Debug.writeln('Route changed successfully! -- ', angular.toJson(event), ' -- ', angular.toJson(current), ' -- ', angular.toJson(previous));
   });
 
   $rootScope.$on('$routeChangeError', function (event, current, previous, rejection) {
-    Debug.writeln('Error: changing routes! -- ', angular.toJson(event), ' -- ', angular.toJson(current), ' -- ', angular.toJson(previous), ' -- ', angular.toJson(rejection));
+    // Debug.writeln('Error: changing routes! -- ', angular.toJson(event), ' -- ', angular.toJson(current), ' -- ', angular.toJson(previous), ' -- ', angular.toJson(rejection));
   });
 
   WinJS.Binding.optimizeBindingReferences = true;
@@ -34,19 +34,19 @@ StandByApp.run(function ($rootScope, $location, $compile, $timeout) {
 
     if (args.detail.kind === activation.ActivationKind.launch) {
       if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
-        Debug.writeln('App is initialized!');
+        // Debug.writeln('App is initialized!');
       } else {
-        Debug.writeln('App is has been reactivated from suspension!');
+        // Debug.writeln('App is has been reactivated from suspension!');
       }
 
       args.setPromise(WinJS.UI.processAll().then(function () {
-        Debug.writeln('All UI processers are done!');
+        // Debug.writeln('All UI processers are done!');
       }));
     }
   });
 
   app.oncheckpoint = function (args) {
-    Debug.writeln('App is saving data on checkpoint!');
+    // Debug.writeln('App is saving data on checkpoint!');
   };
 
   app.start();
