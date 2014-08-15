@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html ng-app="StandByApp">
+<html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="StandByApp" ng-csp>
 <head>
   <meta charset="utf-8" />
 
@@ -19,14 +19,11 @@
   <script src="scripts/vendors/angular-winjs/js/angular-winjs.js"></script>
   <script src="scripts/vendors/angular-md5/angular-md5.js"></script>
 
-  <script src="scripts/services/listView.js"></script>
-
   <script src="scripts/app.js"></script>
   <script src="scripts/config.js"></script>
   <script src="scripts/services/standby.js"></script>
   <script src="scripts/run.js"></script>
   <script src="scripts/controllers/login.js"></script>
-  <script src="scripts/controllers/groupDetailCtrl.js"></script>
 
   <link href="/styles/default.css" rel="stylesheet" />
 </head>
@@ -34,7 +31,7 @@
 
   <h1>StandBy</h1>
   <form name="loginForm"
-        ng-controller="login"
+        ng-controller="loginCtrl"
         ng-submit="login()"
         style="display:none">
     <h2>Login</h2>
@@ -51,16 +48,5 @@
     </div>
   </form>
 
-  <div id="contenthost"
-       data-win-control="Application.PageControlNavigator"
-       data-win-options="{home: '/pages/groupedItems/groupedItems.html'}">
-  </div>
-
-  <div id="appbar"
-       data-win-control="WinJS.UI.AppBar">
-    <button data-win-control="WinJS.UI.AppBarCommand"
-            data-win-options="{id:'cmd', label:'Command', icon:'placeholder'}"
-            type="button"></button>
-  </div>
 </body>
 </html>

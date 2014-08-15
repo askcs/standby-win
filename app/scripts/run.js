@@ -42,44 +42,37 @@ StandByApp.run(function ($rootScope, $location, $compile, $timeout) {
 
   var app = WinJS.Application;
   var activation = Windows.ApplicationModel.Activation;
-  var nav = WinJS.Navigation;
 
   app.addEventListener("activated", function (args) {
-    Debug.writeln('App is gonna start!');
+    
 
     if (args.detail.kind === activation.ActivationKind.launch) {
       if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
         // TODO: This application has been newly launched. Initialize
         // your application here.
+        Debug.writeln('App is initialized!');
       } else {
         // TODO: This application has been reactivated from suspension.
         // Restore application state here.
+        Debug.writeln('App is restored!');
       }
 
 
 
-      if (app.sessionState.history) {
-        nav.history = app.sessionState.history;
-      }
       args.setPromise(WinJS.UI.processAll().then(function () {
-
-        if (nav.location) {
-          nav.history.current.initialPlaceholder = true;
-          return nav.navigate(nav.location, nav.state);
-        } else {
-          return nav.navigate(Application.navigator.home);
-        }
+        Debug.writeln('All UI processers are done!');
       }));
     }
 
-    //Application.navigator.addEventListener('pageLoaded', function (arg) {
-    //    args = arg.detail;
-    $rootScope.$on('ready', function (evt, args) {
-      $timeout(function () {
-        $rootScope.navOptions = args.options || {};
-        $compile(args.element)($rootScope);
-      })
-    });
+
+    //$rootScope.$on('ready', function (evt, args) {
+    //  $timeout(function () {
+    //    $rootScope.navOptions = args.options || {};
+    //    $compile(args.element)($rootScope);
+    //  })
+    //});
+
+
   });
 
   app.oncheckpoint = function (args) {
@@ -87,7 +80,7 @@ StandByApp.run(function ($rootScope, $location, $compile, $timeout) {
     // that needs to persist across suspensions here. If you need to 
     // complete an asynchronous operation before your application is 
     // suspended, call args.setPromise().
-    app.sessionState.history = nav.history;
+    Debug.writeln('App is saving on checkpoint!');
   };
 
 
