@@ -1,18 +1,8 @@
 ﻿<!DOCTYPE html>
 
-<form name="loginForm"
-      ng-controller="loginCtrl"
-      ng-submit="login()">
+<form name="loginForm" ng-submit="login()">
   <h2>Login</h2>
   <input type="text" name="username" data-ng-model="data.username" />
   <input type="password" name="password" data-ng-model="data.password" />
   <button type="submit">Login</button>
-
-  <div data-ng-show="data.session">
-    <p>Session: {{data.session}}</p>
-  </div>
-
-  <div data-ng-show="resources">
-    <p>Resources: {{resources}}</p>
-  </div>
 </form>
