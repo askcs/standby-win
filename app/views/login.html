@@ -4,12 +4,12 @@
       ng-controller="loginCtrl"
       ng-submit="login()">
   <h2>Login</h2>
-  <input type="text" name="username" data-ng-model="loginData.username" />
-  <input type="password" name="password" data-ng-model="loginData.password" />
+  <input type="text" name="username" data-ng-model="data.username" />
+  <input type="password" name="password" data-ng-model="data.password" />
   <button type="submit">Login</button>
 
-  <div data-ng-show="loginData.session">
-    <p>Session: {{loginData.session}}</p>
+  <div data-ng-show="data.session">
+    <p>Session: {{data.session}}</p>
   </div>
 
   <div data-ng-show="resources">
