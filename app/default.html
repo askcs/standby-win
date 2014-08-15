@@ -9,17 +9,16 @@
   <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
   <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
 
-  <script src="scripts/vendors/jquery/dis/jquery.js"></script>
+  <script src="scripts/vendors/jquery/dist/jquery.js"></script>
   <script src="scripts/vendors/angular/angular.js"></script>
   <script src="scripts/vendors/angular-resource/angular-resource.js"></script>
   <script src="scripts/vendors/angular-sanitize/angular-sanitize.js"></script>
   <script src="scripts/vendors/angular-winjs/js/angular-winjs.js"></script>
   <script src="scripts/vendors/angular-md5/angular-md5.js"></script>
 
-  <script src="scripts/app.js"></script>
   <script src="scripts/config.js"></script>
+  <script src="scripts/default.js"></script>
   <script src="scripts/services/standby.js"></script>
-  <script src="scripts/run.js"></script>
   <script src="scripts/controllers/login.js"></script>
 
   <link href="/styles/default.css" rel="stylesheet" />
@@ -28,8 +27,8 @@
 
   <h1>StandBy</h1>
   <form name="loginForm"
-        data-ng-controller="login"
-        data-ng-submit="login()"
+        ng-controller="loginCtrl"
+        ng-submit="login()"
         style="display:none">
     <h2>Login</h2>
     <input type="text" name="username" data-ng-model="loginData.username" />
