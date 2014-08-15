@@ -393,7 +393,9 @@ function decodeEntities(value) {
   var spaceAfter = parts[3];
   var content = parts[2];
   if (content) {
-    hiddenPre.innerHTML=content.replace(/</g,"&lt;");
+    MSApp.execUnsafeLocalFunction(function () {
+      hiddenPre.innerHTML = content.replace(/</g, "&lt;");
+    });
     // innerText depends on styling as it doesn't display hidden elements.
     // Therefore, it's better to use textContent not to cause unnecessary
     // reflows. However, IE<9 don't support textContent so the innerText

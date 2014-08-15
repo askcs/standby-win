@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html ng-app="StandByApp">
+<html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="StandByApp" ng-csp>
 <head>
   <meta charset="utf-8" />
 
@@ -9,61 +9,41 @@
   <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
   <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
 
-  <script src="scripts/data.js"></script>
-  <script src="scripts/navigator.js"></script>
-
-  <script src="scripts/vendors/jquery/dist/jquery.js"></script>
+  <script src="scripts/vendors/jquery/dis/jquery.js"></script>
   <script src="scripts/vendors/angular/angular.js"></script>
   <script src="scripts/vendors/angular-resource/angular-resource.js"></script>
   <script src="scripts/vendors/angular-sanitize/angular-sanitize.js"></script>
   <script src="scripts/vendors/angular-winjs/js/angular-winjs.js"></script>
   <script src="scripts/vendors/angular-md5/angular-md5.js"></script>
 
-  <script src="scripts/services/listView.js"></script>
-
   <script src="scripts/app.js"></script>
   <script src="scripts/config.js"></script>
   <script src="scripts/services/standby.js"></script>
   <script src="scripts/run.js"></script>
   <script src="scripts/controllers/login.js"></script>
-  <script src="scripts/controllers/groupDetailCtrl.js"></script>
 
   <link href="/styles/default.css" rel="stylesheet" />
 </head>
 <body>
 
-  <!--<h1>StandBy</h1>
+  <h1>StandBy</h1>
   <form name="loginForm"
-        ng-controller="login"
-        ng-submit="login()"
+        data-ng-controller="login"
+        data-ng-submit="login()"
         style="display:none">
     <h2>Login</h2>
-    <input type="text" name="username" ng-model="loginData.username" />
-    <input type="password" name="password" ng-model="loginData.password" />
+    <input type="text" name="username" data-ng-model="loginData.username" />
+    <input type="password" name="password" data-ng-model="loginData.password" />
     <button type="submit">Login</button>
 
-    <button type="button" ng-click="navigateTo()">Navigate</button>
-
-    <div ng-show="loginData.session">
+    <div data-ng-show="loginData.session">
       <p>Session: {{loginData.session}}</p>
     </div>
 
-    <div ng-show="resources">
+    <div data-ng-show="resources">
       <p>Resources: {{resources}}</p>
     </div>
-  </form>-->
-
-  <div id="contenthost"
-       data-win-control="Application.PageControlNavigator"
-       data-win-options="{home: '/pages/login/login.html'}">
-  </div>
-
-  <div id="appbar"
-       data-win-control="WinJS.UI.AppBar">
-    <button data-win-control="WinJS.UI.AppBarCommand"
-            data-win-options="{id:'cmd', label:'Command', icon:'placeholder'}"
-            type="button"></button>
-  </div>
+  </form>
 
 </body>
 </html>

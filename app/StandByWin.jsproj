@@ -96,13 +96,16 @@
     <Content Include="scripts\vendors\angular-resource\angular-resource.min.js.map" />
     <Content Include="scripts\vendors\angular-resource\bower.json" />
     <Content Include="scripts\vendors\angular-resource\README.md" />
+    <Content Include="scripts\vendors\angular-sanitize.js" />
     <Content Include="scripts\vendors\angular-sanitize\.bower.json" />
     <Content Include="scripts\vendors\angular-sanitize\angular-sanitize.js" />
     <Content Include="scripts\vendors\angular-sanitize\angular-sanitize.min.js" />
     <Content Include="scripts\vendors\angular-sanitize\angular-sanitize.min.js.map" />
     <Content Include="scripts\vendors\angular-sanitize\bower.json" />
     <Content Include="scripts\vendors\angular-sanitize\README.md" />
+    <Content Include="scripts\vendors\angular-winjs.js" />
     <Content Include="scripts\vendors\angular-winjs\js\angular-winjs.js" />
+    <Content Include="scripts\vendors\angular.js" />
     <Content Include="scripts\vendors\angular\.bower.json" />
     <Content Include="scripts\vendors\angular\angular-csp.css" />
     <Content Include="scripts\vendors\angular\angular.js" />
@@ -111,6 +114,7 @@
     <Content Include="scripts\vendors\angular\angular.min.js.map" />
     <Content Include="scripts\vendors\angular\bower.json" />
     <Content Include="scripts\vendors\angular\README.md" />
+    <Content Include="scripts\vendors\jquery.js" />
     <Content Include="scripts\vendors\jquery\.bower.json" />
     <Content Include="scripts\vendors\jquery\bower.json" />
     <Content Include="scripts\vendors\jquery\dist\jquery.js" />
@@ -201,7 +205,7 @@
     <Content Include="scripts\vendors\jquery\src\var\toString.js" />
     <Content Include="scripts\vendors\jquery\src\wrap.js" />
     <Content Include="styles\default.css" />
-    <Content Include="scripts\app.js" />
+    <Content Include="scripts\default.js" />
     <Content Include="scripts\run.js" />
     <Content Include="scripts\services\standby.js" />
     <Content Include="screenshot.png" />
