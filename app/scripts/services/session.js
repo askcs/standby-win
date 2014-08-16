@@ -1,54 +1,42 @@
 StandByApp.factory(
   'Session', [
-    '$rootScope', '$http', '$location',
-    function ($rootScope, $http, $location)
+    '$rootScope', '$http',
+    function ($rootScope, $http)
     {
       return {
-        check: function ()
-        {
-          if (! this.get())
-          {
-            $location.path("/login");
+        header: $http.defaults.headers.common["X-SESSION_ID"],
 
-            return false;
-          }
-          else
-          {
-            return true;
-          }
-        },
+        check: function () { return ((this.get())) },
+
         get: function ()
         {
-          var session;
+          var session = angular.fromJson(sessionStorage.getItem("session"));
 
-          session = angular.fromJson(sessionStorage.getItem("session"));
-
-          if (! $http.defaults.headers.common["X-SESSION_ID"] && session)
+          if (! this.header && session)
           {
-            $http.defaults.headers.common["X-SESSION_ID"] = session.id;
+            this.header = session.id;
           }
 
           return (session) ? session.id : false;
         },
+
         set: function (id)
         {
-          $http.defaults.headers.common["X-SESSION_ID"] = id;
+          this.header = id;
 
           sessionStorage.setItem(
-            "session",
-            angular.toJson(
-              {
-                id: id,
-                time: new Date()
-              }
-            )
+            'session',
+            angular.toJson({ id: id, time: new Date() })
           );
         },
+
         clear: function ()
         {
           sessionStorage.removeItem("session");
-          $http.defaults.headers.common["X-SESSION_ID"] = null;
+
+          this.header = null;
         }
       };
     }
-  ]);
+  ]
+);

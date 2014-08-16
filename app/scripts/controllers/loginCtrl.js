@@ -2,8 +2,6 @@ StandByApp.controller(
   'loginCtrl',
   function ($scope, Log, User)
   {
-    Log.print('Just testing?');
-
     $scope.data = {
       username: '',
       password: ''
@@ -45,7 +43,7 @@ StandByApp.controller(
             }
             else
             {
-              Log.write('Successfully logged id! ' + angular.toJson(result));
+              Log.print('Successfully logged id! ', result);
             }
           }
         );

@@ -1,18 +1,27 @@
 StandByApp.factory(
   'Offline', [
-    '$rootScope', function ($rootScope)
+    '$rootScope',
+    function ($rootScope)
     {
       var Offline;
+
       Offline = (function ()
       {
         function Offline ()
         {
-          var event, _i, _len, _ref;
+          var event,
+              _i,
+              _len,
+              _ref;
+
           this.events = ['online', 'offline'];
+
           _ref = this.events;
+
           for (_i = 0, _len = _ref.length; _i < _len; _i ++)
           {
             event = _ref[_i];
+
             this.addEvents(event);
           }
         }
@@ -23,6 +32,7 @@ StandByApp.factory(
           {
             useCapture = false;
           }
+
           return element.addEventListener(event, fn, useCapture);
         };
 
@@ -44,6 +54,7 @@ StandByApp.factory(
         return Offline;
 
       })();
+
       return Offline;
     }
   ]);

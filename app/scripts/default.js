@@ -26,7 +26,6 @@ StandByApp.config(
 );
 
 
-
 StandByApp.run(
   function ($rootScope, $location, $compile, $timeout, Log)
   {
@@ -36,47 +35,58 @@ StandByApp.run(
       '$routeChangeStart',
       function (event, next, current)
       {
-        // Log.write('Route change started! -- ' + angular.toJson(event) + ' -- ' + angular.toJson(next) + ' -- ' + angular.toJson(current));
-      });
+        Log.print('Route change started!', event, next, current);
+      }
+    );
 
     $rootScope.$on(
       '$routeChangeSuccess',
       function (event, current, previous)
       {
-        // Log.write('Route changed successfully! -- ' + angular.toJson(event) + ' -- ' + angular.toJson(current) + ' -- ' + angular.toJson(previous));
-      });
+        Log.print('Route changed successfully!', event, current, previous);
+      }
+    );
 
     $rootScope.$on(
       '$routeChangeError',
       function (event, current, previous, rejection)
       {
-        // Log.write('Error: changing routes! -- ' + angular.toJson(event) + ' -- ' + angular.toJson(current) + ' -- ' + angular.toJson(previous) + ' -- ' + angular.toJson(rejection));
-      });
+        Log.print('Error: changing routes!', event, current, previous, rejection);
+      }
+    );
 
-    //  WinJS.Binding.optimizeBindingReferences = true;
+    //    WinJS.Binding.optimizeBindingReferences = true;
     //
-    //  var app = WinJS.Application;
-    //  var activation = Windows.ApplicationModel.Activation;
+    //    var app = WinJS.Application;
+    //    var activation = Windows.ApplicationModel.Activation;
     //
-    //  app.addEventListener("activated", function (args) {
+    //    app.addEventListener(
+    //      'activated',
+    //      function (args)
+    //      {
+    //        if (args.detail.kind === activation.ActivationKind.launch)
+    //        {
+    //          if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated)
+    //          {
+    //            Log.print('App is initialized!');
+    //          }
+    //          else
+    //          {
+    //            Log.print('App is has been reactivated from suspension!');
+    //          }
     //
-    //    if (args.detail.kind === activation.ActivationKind.launch) {
-    //      if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
-    //        // console.log('App is initialized!');
-    //      } else {
-    //        // console.log('App is has been reactivated from suspension!');
+    //          args.setPromise(
+    //            WinJS.UI.processAll()
+    //              .then(
+    //              function () { Log.print('All UI processes are done!') }
+    //            )
+    //          );
+    //        }
     //      }
+    //    );
     //
-    //      args.setPromise(WinJS.UI.processAll().then(function () {
-    //        // console.log('All UI processers are done!');
-    //      }));
-    //    }
-    //  });
+    //    app.oncheckpoint = function (args) { Log.print('App is saving data on checkpoint!') };
     //
-    //  app.oncheckpoint = function (args) {
-    //    // console.log('App is saving data on checkpoint!');
-    //  };
-    //
-    //  app.start();
+    //    app.start();
   }
 );

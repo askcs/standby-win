@@ -37,7 +37,7 @@ StandByApp.factory(
           {
             ((callback && callback.success)) && callback.success.call(this, result);
 
-            Log.write('Call:' + proxy +' -- params: ' + angular.toJson(params) +' -- data load:' + angular.toJson(data) + ' -- result: ' + angular.toJson(result));
+            Log.print('Call:', proxy, 'params: ', params, 'data load:', data, 'result: ', result);
 
             deferred.resolve(result);
           },
@@ -45,15 +45,15 @@ StandByApp.factory(
           {
             ((callback && callback.error)) && callback.error.call(this, result);
 
-            Log.write('Error with call:' + proxy, ' -- params: ' + angular.toJson(params) + ' -- data load:' + angular.toJson(data) + '-- result: ' + angular.toJson(result));
+            Log.error('Error with call:', proxy, 'params: ', params, 'data load:', data, 'result: ', result);
 
             deferred.resolve({ error: result });
           }
         );
       }
-      catch (err)
+      catch (e)
       {
-        Log.write('Error with making call:' + angular.toJson(err));
+        Log.error('Error with making call:', e);
       }
 
       return deferred.promise;
