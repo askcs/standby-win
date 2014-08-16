@@ -34,5 +34,28 @@ StandByApp.factory(
       return deferred.promise;
     };
 
+    User.prototype.logout = function ()
+    {
+      var deferred = $q.defer();
+
+      try
+      {
+        StandBy._('logout').then(
+          function (result)
+          {
+            Session.clear();
+
+            deferred.resolve(result);
+          }
+        );
+      }
+      catch (err)
+      {
+        Log.error('Something went wrong with logout call:', err);
+      }
+
+      return deferred.promise;
+    };
+
     return new User();
   });

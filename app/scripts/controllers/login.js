@@ -1,10 +1,10 @@
 StandByApp.controller(
   'login',
-  function ($scope, Log, User)
+  function ($scope, $location, Log, User)
   {
     $scope.data = {
-      username: '',
-      password: ''
+      username: 'devcengiz',
+      password: 'askask'
     };
 
     $scope.warning = {
@@ -12,7 +12,7 @@ StandByApp.controller(
       message: ''
     };
 
-    $scope.login = function ()
+    $scope.authorize = function ()
     {
       if ($scope.data.username == '' || $scope.data.password == '')
       {
@@ -43,11 +43,13 @@ StandByApp.controller(
             }
             else
             {
-              Log.print('Successfully logged id! ', result);
+              $location.path('/dashboard');
             }
           }
         );
       }
-    }
+    };
+
+    angular.element('form').css({ display: 'block' });
   }
 );

@@ -24,15 +24,24 @@ StandByApp.factory(
         {
           this.header = id;
 
+          var session = {
+            id: id,
+            time: new Date()
+          };
+
           sessionStorage.setItem(
             'session',
-            angular.toJson({ id: id, time: new Date() })
+            angular.toJson(session)
           );
+
+          $rootScope.app.session = session;
         },
 
         clear: function ()
         {
           sessionStorage.removeItem("session");
+
+          delete $rootScope.app.session;
 
           this.header = null;
         }

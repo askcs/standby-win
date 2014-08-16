@@ -25,9 +25,22 @@ StandByApp.config(
   function ($routeProvider, $httpProvider)
   {
     $routeProvider
-      .when('/login', { templateUrl: 'views/login.html', controller: 'login' })
-      .when('/dashboard', { templateUrl: 'views/dashboard.html', controller: 'dashboard' })
-      .otherwise({ redirectTo: '/login' });
+      .when(
+      '/login',
+      {
+        templateUrl: 'views/login.html',
+        controller: 'login'
+      })
+      .when(
+      '/dashboard',
+      {
+        templateUrl: 'views/dashboard.html',
+        controller: 'dashboard'
+      })
+      .otherwise(
+      {
+        redirectTo: '/login'
+      });
 
     $httpProvider.interceptors.push(
       function ($q, Log)
@@ -63,9 +76,35 @@ StandByApp.config(
 
 
 StandByApp.run(
-  function ($rootScope, Log)
+  function ($rootScope, $config, $location, Log, Session, Offline, User)
   {
-    angular.element('form').css({ display: 'block' });
+    Session.check();
+
+    $rootScope.app = $rootScope.app || {};
+
+    $rootScope.config = $config;
+
+    new Offline();
+
+    $rootScope.$on(
+      'connection',
+      function ()
+      {
+        Log.print(
+          (! arguments[1]) ?
+          'connection restored :]' + Date.now() :
+          'connection lost :[' + Date.now()
+        );
+      }
+    );
+
+    $rootScope.logout = function ()
+    {
+      User.logout()
+        .then(
+        function () { $location.path('/login') }
+      );
+    };
 
     $rootScope.$on(
       '$routeChangeStart',
