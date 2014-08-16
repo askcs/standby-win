@@ -14,13 +14,46 @@ StandByApp.constant(
 
 StandByApp.config(
   [
-    '$routeProvider',
-    function ($routeProvider)
+    '$routeProvider', '$httpProvider',
+    function ($routeProvider, $httpProvider)
     {
       $routeProvider
         .when('/login', { templateUrl: 'views/login.html', controller: 'loginCtrl' })
         .when('/dashboard', { templateUrl: 'views/dashboard.html', controller: 'dashboardCtrl' })
         .otherwise({ redirectTo: '/login' });
+
+      $httpProvider.interceptors.push(
+        [
+          '$q', 'Log',
+          function ($q, Log)
+          {
+            return {
+              request: function (config) { return config || $q.when(config) },
+
+              requestError: function (rejection)
+              {
+                Log.error('Request error:', rejection);
+
+                return $q.reject(rejection);
+              },
+
+              response: function (response) { return response || $q.when(response) },
+
+              responseError: function (rejection)
+              {
+                Log.error('Response error:', rejection);
+
+                if (rejection.status == 403)
+                {
+                  // Do something about not authorized calls
+                }
+
+                return $q.reject(rejection);
+              }
+            };
+          }
+        ]
+      );
     }
   ]
 );
