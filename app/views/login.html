@@ -5,4 +5,5 @@
   <input type="text" name="username" data-ng-model="data.username" />
   <input type="password" name="password" data-ng-model="data.password" />
   <button type="submit">Login</button>
+  <span ng-show="warning.status">{{warning.message}}</span>
 </form>
