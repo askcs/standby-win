@@ -1,6 +1,6 @@
 StandByApp.controller(
   'login',
-  function ($scope, $location, $q, Log, Store, User, Environment, Network)
+  function ($scope, $location, $q, Log, Store, User, Environment, Network, Planboard)
   {
     $scope.view = 'login';
 
@@ -53,7 +53,7 @@ StandByApp.controller(
 
               User.resources()
                 .then(
-                function ()
+                function (resources)
                 {
                   $scope.preloaded.push('Setting up environment.');
 
@@ -76,7 +76,34 @@ StandByApp.controller(
 
                           Network.population()
                             .then(
-                            function () { $location.path('/dashboard') }
+                            function ()
+                            {
+                              $scope.preloaded.push('Getting calculating group availability overviews.');
+
+                              Planboard.clusters()
+                                .then(
+                                function ()
+                                {
+                                  $scope.preloaded.push('Getting user availability.');
+
+                                  Planboard.availability(resources.uuid)
+                                    .then(
+                                    function ()
+                                    {
+                                      $scope.preloaded.push('Getting member availabilities.');
+
+                                      Planboard.availabilities()
+                                        .then(
+                                        function ()
+                                        {
+                                          $location.path('/dashboard');
+                                        }
+                                      );
+                                    }
+                                  );
+                                }
+                              );
+                            }
                           );
 
                         }

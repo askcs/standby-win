@@ -48,6 +48,23 @@ StandByApp.factory(
             method: 'GET',
             params: { first: 'network', third: 'members'}, // fields: '[role, settingsWebPaige]'
             isArray: true
+          },
+
+          // Planboard
+          cluster: {
+            method:  'GET',
+            params:  { first: 'calc_planning', start: '', end: '' },
+            isArray: true
+          },
+          availability: {
+            method:  'GET',
+            params:  { first: 'askatars', third: 'slots', start: '', end: '' },
+            isArray: true
+          },
+          availabilities: {
+            method:  'GET',
+            params:  { first: 'network', third: 'member', fourth: 'slots2', start: '', end: '' },
+            isArray: true
           }
         }
     );
@@ -75,7 +92,7 @@ StandByApp.factory(
           {
             ((callback && callback.error)) && callback.error.call(this, result);
 
-            // Log.error('Error with call:', proxy, 'params: ', params, 'data load:', data, 'result: ', result);
+            Log.error('Error with call:', proxy, 'params: ', params, 'data load:', data, 'result: ', result);
 
             deferred.resolve({ error: result });
           }
@@ -83,7 +100,7 @@ StandByApp.factory(
       }
       catch (e)
       {
-        // Log.error('Error with making call:', e);
+        Log.error('Error with making call:', e);
       }
 
       return deferred.promise;
