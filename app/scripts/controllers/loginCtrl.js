@@ -2,6 +2,8 @@ StandByApp.controller(
   'loginCtrl',
   function ($scope, Log, User)
   {
+    Log.print('Just testing?');
+
     $scope.data = {
       username: '',
       password: ''

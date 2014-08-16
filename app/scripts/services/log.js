@@ -1,47 +1,74 @@
 StandByApp.factory(
   'Log', [
-    'Store', function (Store)
+    '$window',
+    function ($window)
     {
-      return {
-        write: function (message)
+      var self = this;
+
+      function formatError (arg)
+      {
+        if (arg instanceof Error)
         {
-          console.log(message);
-        },
-        record: function (key, message)
-        {
-          var stamp;
-          stamp = Date.now();
-          key += '_' + stamp;
-          return Store('logs').save(
-            key, {
-              time: stamp,
-              message: message
-            });
-        },
-        error: function (trace)
-        {
-          var body, err, stamp;
-          Store = Store('error');
-          stamp = Date.now();
-          err = {};
-          body = {};
-          if (trace.hasOwnProperty('message'))
+          if (arg.stack)
           {
-            body = {
-              stack: trace.stack,
-              message: trace.message
-            };
+            arg = (arg.message && arg.stack.indexOf(arg.message) === - 1)
+              ? 'Error: ' + arg.message + '\n' + arg.stack
+              : arg.stack;
           }
-          else
+          else if (arg.sourceURL)
           {
-            body = {
-              trace: trace
-            };
+            arg = arg.message + '\n' + arg.sourceURL + ':' + arg.line;
           }
-          err[stamp] = body;
-          this.write('Error: ' + trace);
-          return Store.save('error_' + stamp, err);
         }
+
+        return arg;
+      }
+
+      function consoleLog (type)
+      {
+        var console = $window.console || {},
+            logFn = console[type] || console.log || angular.noop,
+            hasApply = false;
+
+        // Note: reading logFn.apply throws an error in IE11 in IE8 document mode.
+        // The reason behind this is that console.log has type "object" in IE8...
+        try
+        {
+          hasApply = ! ! logFn.apply;
+        }
+        catch (e)
+        {}
+
+        if (hasApply)
+        {
+          return function ()
+          {
+            var args = [];
+
+            angular.forEach(
+              arguments,
+              function (arg) { args.push(formatError(arg)) }
+            );
+
+            return logFn.apply(console, args);
+          };
+        }
+
+        // we are IE which either doesn't have window.console => this is noop and we do nothing,
+        // or we are IE where console.log doesn't have apply so we log at least first 2 args
+        return function (arg1, arg2) { logFn(arg1, arg2 == null ? '' : arg2) };
+      }
+
+      return {
+        print: consoleLog('log'),
+        info: consoleLog('info'),
+        warn: consoleLog('warn'),
+        error: consoleLog('error'),
+        debug: (function ()
+        {
+          return function () { consoleLog('debug').apply(self, arguments) };
+        }())
       };
     }
-  ]);
+  ]
+);

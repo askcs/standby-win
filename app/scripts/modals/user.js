@@ -28,7 +28,7 @@ StandByApp.factory(
       }
       catch (err)
       {
-        Log.write('Error with making call:' + angular.toJson(err));
+        Log.write('Something went wrong with login call: ' + angular.toJson(err));
       }
 
       return deferred.promise;
