@@ -37,7 +37,7 @@ StandByApp.factory(
           {
             ((callback && callback.success)) && callback.success.call(this, result);
 
-            Log.print('Call:', proxy, 'params: ', params, 'data load:', data, 'result: ', result);
+            // Log.print('Call:', proxy, 'params: ', params, 'data load:', data, 'result: ', result);
 
             deferred.resolve(result);
           },

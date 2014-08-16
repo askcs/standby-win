@@ -1,5 +1,5 @@
 StandByApp.controller(
-  'dashboardCtrl',
+  'dashboard',
   function ($scope)
   {
     $scope.data = {

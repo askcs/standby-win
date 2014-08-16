@@ -1,5 +1,5 @@
 StandByApp.controller(
-  'loginCtrl',
+  'login',
   function ($scope, Log, User)
   {
     $scope.data = {

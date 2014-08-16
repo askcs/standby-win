@@ -1,10 +1,19 @@
 ﻿'use strict';
 
-var StandByApp = angular.module('StandByApp', ['ngRoute', 'ngResource', 'ngSanitize', 'ngMd5']); // 'winjs'
+var StandByApp = angular.module(
+  'StandByApp',
+  [
+    'ngRoute',
+    'ngResource',
+    'ngSanitize',
+    'ngMd5'
+  ]
+); // 'winjs'
 
 
 StandByApp.constant(
-  '$config', {
+  '$config',
+  {
     host: 'http://dev.ask-cs.com',
     version: '0.0.1',
     released: '00-00-0000'
@@ -13,54 +22,48 @@ StandByApp.constant(
 
 
 StandByApp.config(
-  [
-    '$routeProvider', '$httpProvider',
-    function ($routeProvider, $httpProvider)
-    {
-      $routeProvider
-        .when('/login', { templateUrl: 'views/login.html', controller: 'loginCtrl' })
-        .when('/dashboard', { templateUrl: 'views/dashboard.html', controller: 'dashboardCtrl' })
-        .otherwise({ redirectTo: '/login' });
+  function ($routeProvider, $httpProvider)
+  {
+    $routeProvider
+      .when('/login', { templateUrl: 'views/login.html', controller: 'login' })
+      .when('/dashboard', { templateUrl: 'views/dashboard.html', controller: 'dashboard' })
+      .otherwise({ redirectTo: '/login' });
 
-      $httpProvider.interceptors.push(
-        [
-          '$q', 'Log',
-          function ($q, Log)
+    $httpProvider.interceptors.push(
+      function ($q, Log)
+      {
+        return {
+          request: function (config) { return config || $q.when(config) },
+
+          requestError: function (rejection)
           {
-            return {
-              request: function (config) { return config || $q.when(config) },
+            Log.error('Request error:', rejection);
 
-              requestError: function (rejection)
-              {
-                Log.error('Request error:', rejection);
+            return $q.reject(rejection);
+          },
 
-                return $q.reject(rejection);
-              },
+          response: function (response) { return response || $q.when(response) },
 
-              response: function (response) { return response || $q.when(response) },
+          responseError: function (rejection)
+          {
+            Log.error('Response error:', rejection);
 
-              responseError: function (rejection)
-              {
-                Log.error('Response error:', rejection);
+            if (rejection.status == 403)
+            {
+              // Do something about not authorized calls
+            }
 
-                if (rejection.status == 403)
-                {
-                  // Do something about not authorized calls
-                }
-
-                return $q.reject(rejection);
-              }
-            };
+            return $q.reject(rejection);
           }
-        ]
-      );
-    }
-  ]
+        };
+      }
+    );
+  }
 );
 
 
 StandByApp.run(
-  function ($rootScope, $location, $compile, $timeout, Log)
+  function ($rootScope, Log)
   {
     angular.element('form').css({ display: 'block' });
 
@@ -68,7 +71,7 @@ StandByApp.run(
       '$routeChangeStart',
       function (event, next, current)
       {
-        Log.print('Route change started!', event, next, current);
+        // Log.print('Route change started!', event, next, current);
       }
     );
 
@@ -76,7 +79,7 @@ StandByApp.run(
       '$routeChangeSuccess',
       function (event, current, previous)
       {
-        Log.print('Route changed successfully!', event, current, previous);
+        // Log.print('Route changed successfully!', event, current, previous);
       }
     );
 
@@ -84,7 +87,7 @@ StandByApp.run(
       '$routeChangeError',
       function (event, current, previous, rejection)
       {
-        Log.print('Error: changing routes!', event, current, previous, rejection);
+        // Log.print('Error: changing routes!', event, current, previous, rejection);
       }
     );
 
