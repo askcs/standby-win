@@ -4,17 +4,15 @@ StandByApp.factory(
     function ($rootScope, $http)
     {
       return {
-        header: $http.defaults.headers.common["X-SESSION_ID"],
-
         check: function () { return ((this.get())) },
 
         get: function ()
         {
           var session = angular.fromJson(sessionStorage.getItem("session"));
 
-          if (! this.header && session)
+          if (! $http.defaults.headers.common["X-SESSION_ID"] && session)
           {
-            this.header = session.id;
+            $http.defaults.headers.common["X-SESSION_ID"] = session.id;
           }
 
           return (session) ? session.id : false;
@@ -22,7 +20,7 @@ StandByApp.factory(
 
         set: function (id)
         {
-          this.header = id;
+          $http.defaults.headers.common["X-SESSION_ID"] = id;
 
           var session = {
             id: id,
@@ -43,7 +41,7 @@ StandByApp.factory(
 
           delete $rootScope.app.session;
 
-          this.header = null;
+          $http.defaults.headers.common["X-SESSION_ID"] = null;
         }
       };
     }

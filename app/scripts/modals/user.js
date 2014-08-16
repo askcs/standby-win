@@ -1,6 +1,6 @@
 StandByApp.factory(
   'User',
-  function ($resource, $q, $config, $http, Log, md5, StandBy, Session)
+  function ($resource, $q, $config, $http, Log, md5, StandBy, Session, Store)
   {
     var User = $resource();
 
@@ -26,9 +26,9 @@ StandByApp.factory(
           }
         );
       }
-      catch (err)
+      catch (e)
       {
-        Log.error('Something went wrong with login call:', err);
+        Log.error('Something went wrong with login call:', e);
       }
 
       return deferred.promise;
@@ -49,9 +49,32 @@ StandByApp.factory(
           }
         );
       }
-      catch (err)
+      catch (e)
       {
-        Log.error('Something went wrong with logout call:', err);
+        Log.error('Something went wrong with logout call:', e);
+      }
+
+      return deferred.promise;
+    };
+
+    User.prototype.resources = function ()
+    {
+      var deferred = $q.defer();
+
+      try
+      {
+        StandBy._('resources').then(
+          function (result)
+          {
+            Store('user').save('resources', result);
+
+            deferred.resolve(result);
+          }
+        );
+      }
+      catch (e)
+      {
+        Log.error('Something went wrong with resources call:', e);
       }
 
       return deferred.promise;

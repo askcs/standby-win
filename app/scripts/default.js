@@ -25,25 +25,12 @@ StandByApp.config(
   function ($routeProvider, $httpProvider)
   {
     $routeProvider
-      .when(
-      '/login',
-      {
-        templateUrl: 'views/login.html',
-        controller: 'login'
-      })
-      .when(
-      '/dashboard',
-      {
-        templateUrl: 'views/dashboard.html',
-        controller: 'dashboard'
-      })
-      .otherwise(
-      {
-        redirectTo: '/login'
-      });
+      .when('/login', { templateUrl: 'views/login.html', controller: 'login' })
+      .when('/dashboard', { templateUrl: 'views/dashboard.html', controller: 'dashboard' })
+      .otherwise({ redirectTo: '/login' });
 
     $httpProvider.interceptors.push(
-      function ($q, Log)
+      function ($q, $location, Log)
       {
         return {
           request: function (config) { return config || $q.when(config) },
@@ -63,7 +50,7 @@ StandByApp.config(
 
             if (rejection.status == 403)
             {
-              // Do something about not authorized calls
+              $location.path('/login');
             }
 
             return $q.reject(rejection);
@@ -76,9 +63,14 @@ StandByApp.config(
 
 
 StandByApp.run(
-  function ($rootScope, $config, $location, Log, Session, Offline, User)
+  function ($rootScope, $config, $location, Log, Session, Offline, $http)
   {
-    Session.check();
+    $rootScope.http = $http;
+
+    if (Session.check())
+    {
+      $location.path('/dashboard');
+    }
 
     $rootScope.app = $rootScope.app || {};
 
@@ -97,14 +89,6 @@ StandByApp.run(
         );
       }
     );
-
-    $rootScope.logout = function ()
-    {
-      User.logout()
-        .then(
-        function () { $location.path('/login') }
-      );
-    };
 
     $rootScope.$on(
       '$routeChangeStart',

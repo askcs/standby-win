@@ -1,9 +1,23 @@
 ﻿<!DOCTYPE html>
 
-<form name="loginForm" ng-submit="authorize()">
-  <h2>Login</h2>
-  <input type="text" name="username" data-ng-model="data.username" />
-  <input type="password" name="password" data-ng-model="data.password" />
-  <button type="submit">Login</button>
-  <span ng-show="warning.status">{{warning.message}}</span>
-</form>
+<section ng-switch on="view">
+
+  <article ng-switch-when="login">
+    <form name="loginForm" ng-submit="authorize()">
+      <h2>Login</h2>
+      <input type="text" name="username" data-ng-model="data.username" />
+      <input type="password" name="password" data-ng-model="data.password" />
+      <button type="submit">Login</button>
+      <span ng-show="warning.status">{{warning.message}}</span>
+    </form>
+  </article>
+
+  <article ng-switch-when="preloaded">
+    <ul>
+      <li ng-repeat="loaded in preloaded">
+        {{loaded}}
+      </li>
+    </ul>
+  </article>
+
+</section>

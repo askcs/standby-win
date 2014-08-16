@@ -1,8 +1,50 @@
 ﻿<!DOCTYPE html>
 
-<a href="" ng-click="logout()" ng-show="app.session.id">Logout</a>
-<br/><br/>
+<header ng-controller="login">
+  <a href="" ng-click="logout()">Logout</a>
+</header>
 
-<p>This is the dashboard page!</p>
+<section>
+  <article>
+    <ul>
+      <li ng-repeat="group in data.groups">
 
-<p>{{data.groups}}</p>
+        <h3>{{group.name}}</h3>
+
+        <!--<pre><small>{{group.loading | json}}</small></pre>-->
+
+        <div ng-show="(group.loading)">
+          <p>Loading members..</p>
+        </div>
+
+        <!--<div ng-hide="group.loading">-->
+          <!--<p ng-hide="group.members.length > 0">There are no members.</p>-->
+
+          <!--<p ng-show="group.members.length > 0">-->
+          <!--<ul>-->
+            <!--<li ng-repeat="member in group.members">{{member.name}}</li>-->
+          <!--</ul>-->
+          <!--</p>-->
+        <!--</div>-->
+
+        <!--<div ng-show="group.loading">-->
+          <!--<p>Loading members..</p>-->
+        <!--</div>-->
+
+        <!--<div ng-hide="group.loading">-->
+          <!--<p ng-hide="group.members.length > 0">There are no members.</p>-->
+
+          <!--<p>There are {{group.members.length}} members in this group.</p>-->
+
+          <!--<p ng-show="group.members.length > 0 ">-->
+          <!--<ul>-->
+            <!--<li ng-repeat="member in group.members">{{member.name}}</li>-->
+          <!--</ul>-->
+          <!--</p>-->
+        <!--</div>-->
+
+        <hr/>
+      </li>
+    </ul>
+  </article>
+</section>

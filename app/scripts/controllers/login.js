@@ -1,7 +1,9 @@
 StandByApp.controller(
   'login',
-  function ($scope, $location, Log, User)
+  function ($scope, $location, $q, Log, Store, User, Environment, Network)
   {
+    $scope.view = 'login';
+
     $scope.data = {
       username: 'devcengiz',
       password: 'askask'
@@ -43,13 +45,70 @@ StandByApp.controller(
             }
             else
             {
-              $location.path('/dashboard');
+              $scope.view = 'preloaded';
+
+              $scope.preloaded = [];
+
+              $scope.preloaded.push('Loading user resources.');
+
+              User.resources()
+                .then(
+                function ()
+                {
+                  $scope.preloaded.push('Setting up environment.');
+
+                  $q.all(
+                    [
+                      Environment.domain(),
+                      Environment.states(),
+                      Environment.divisions()
+                    ]
+                  ).then(
+                    function ()
+                    {
+                      $scope.preloaded.push('Getting groups list.');
+
+                      Network.groups()
+                        .then(
+                        function ()
+                        {
+                          $scope.preloaded.push('Populating group members.');
+
+                          Network.population()
+                            .then(function () { $location.path('/dashboard') }
+                          );
+
+                        }
+                      );
+                    }
+                  )
+                }
+              );
             }
           }
         );
       }
     };
 
-    angular.element('form').css({ display: 'block' });
+
+    $scope.logout = function ()
+    {
+      // $scope.view = 'logout';
+
+      _.each(
+        ['user', 'environment', 'network'],
+        function (table) { Store(table).nuke() }
+      );
+
+      User.logout()
+        .then(
+        function ()
+        {
+          $location.path('/login');
+
+          // $scope.view = 'login';
+        }
+      );
+    };
   }
 );

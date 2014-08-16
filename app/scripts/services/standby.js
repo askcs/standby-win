@@ -6,6 +6,7 @@ StandByApp.factory(
         $config.host + '/:first/:second/:third/:fourth',
         {},
         {
+          // User
           login: {
             method: 'GET',
             params: { first: 'login', uuid: '', pass: '' }
@@ -18,6 +19,35 @@ StandByApp.factory(
           resources: {
             method: 'GET',
             params: { first: 'resources' }
+          },
+
+          // Environment
+          domain: {
+            method: 'GET',
+            params: { first: 'domain' },
+            isArray: true
+          },
+          divisions: {
+            method: 'GET',
+            params: { first: 'divisions' },
+            isArray: true
+          },
+          states: {
+            method: 'GET',
+            params: { first: 'states' },
+            isArray: true
+          },
+
+          // Network
+          groups: {
+            method: 'GET',
+            params: { first: 'network' },
+            isArray: true
+          },
+          members: {
+            method: 'GET',
+            params: { first: 'network', third: 'members'}, // fields: '[role, settingsWebPaige]'
+            isArray: true
           }
         }
     );
