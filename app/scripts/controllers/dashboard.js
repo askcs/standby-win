@@ -1,6 +1,6 @@
 StandByApp.controller(
   'dashboard',
-  function ($scope, $q, $timeout, $location, Session, Log, Store, Network)
+  function ($scope, $q, $timeout, $location, Session, Log, Store)
   {
     if (! Session.check())
     {
@@ -21,7 +21,7 @@ StandByApp.controller(
         $scope.data.groups[group.uuid] = {
           name: group.name,
           loading: true,
-          members: []
+          members: Store('network').get('group.' + group.uuid)
         };
       }
     );

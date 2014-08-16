@@ -75,7 +75,8 @@ StandByApp.controller(
                           $scope.preloaded.push('Populating group members.');
 
                           Network.population()
-                            .then(function () { $location.path('/dashboard') }
+                            .then(
+                            function () { $location.path('/dashboard') }
                           );
 
                         }

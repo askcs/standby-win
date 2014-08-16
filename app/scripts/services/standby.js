@@ -75,7 +75,7 @@ StandByApp.factory(
           {
             ((callback && callback.error)) && callback.error.call(this, result);
 
-            Log.error('Error with call:', proxy, 'params: ', params, 'data load:', data, 'result: ', result);
+            // Log.error('Error with call:', proxy, 'params: ', params, 'data load:', data, 'result: ', result);
 
             deferred.resolve({ error: result });
           }
@@ -83,7 +83,7 @@ StandByApp.factory(
       }
       catch (e)
       {
-        Log.error('Error with making call:', e);
+        // Log.error('Error with making call:', e);
       }
 
       return deferred.promise;

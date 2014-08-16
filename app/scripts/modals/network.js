@@ -27,6 +27,10 @@ StandByApp.factory(
       return deferred.promise;
     };
 
+    var filter = function (result)
+    {
+      return result.resources.role > 0 && result.resources.role < 4
+    };
 
     Network.prototype.members = function (groupID)
     {
@@ -40,7 +44,11 @@ StandByApp.factory(
         ).then(
           function (result)
           {
-            Store('network').save('group.' + groupID, result);
+            Store('network')
+              .save(
+                'group.' + groupID,
+                _.filter(result, filter)
+            );
 
             deferred.resolve(result);
           }
@@ -54,17 +62,11 @@ StandByApp.factory(
       return deferred.promise;
     };
 
-
     Network.prototype.population = function ()
     {
       var deferred = $q.defer(),
           calls = [],
           members = {};
-
-      var filter = function (result)
-      {
-        return result.resources.role > 0 && result.resources.role < 4
-      };
 
       try
       {
