@@ -13,11 +13,7 @@
   </article>
 
   <article ng-switch-when="preloaded">
-    <ul>
-      <li ng-repeat="loaded in preloaded">
-        {{loaded}}
-      </li>
-    </ul>
+    <p>{{preloaded}} {{app.preloaded.ratio}}%</p>
   </article>
 
 </section>

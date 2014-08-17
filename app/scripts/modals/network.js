@@ -1,6 +1,6 @@
 StandByApp.factory(
   'Network',
-  function ($resource, $q, Log, StandBy, Store)
+  function ($rootScope, $resource, $q, Log, StandBy, Store)
   {
     var Network = $resource();
 
@@ -66,12 +66,15 @@ StandByApp.factory(
     {
       var deferred = $q.defer(),
           calls = [],
-          members = {};
+          members = {},
+          groups = Store('network').get('groups');
+
+      $rootScope.missioned(groups.length);
 
       try
       {
         _.each(
-          Store('network').get('groups'),
+          groups,
           function (group)
           {
             calls.push(
@@ -81,6 +84,8 @@ StandByApp.factory(
               ).then(
                 function (results)
                 {
+                  $rootScope.ticked();
+
                   Store('network')
                     .save(
                       'group.' + group.uuid,

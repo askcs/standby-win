@@ -13,6 +13,8 @@ StandByApp.factory(
         StandBy._('domain').then(
           function (result)
           {
+            $rootScope.ticked();
+
             Store('environment').save('domain', result);
 
             $rootScope.app.environment.domain = result;
@@ -38,6 +40,8 @@ StandByApp.factory(
         StandBy._('states').then(
           function (result)
           {
+            $rootScope.ticked();
+
             Store('environment').save('states', result);
 
             $rootScope.app.environment.states = result;
@@ -63,6 +67,8 @@ StandByApp.factory(
         StandBy._('divisions').then(
           function (result)
           {
+            $rootScope.ticked();
+
             Store('environment').save('divisions', result);
 
             $rootScope.app.environment.divisions = result;
@@ -74,6 +80,35 @@ StandByApp.factory(
       catch (e)
       {
         Log.error('Something went wrong with environment divisions call:', e);
+      }
+
+      return deferred.promise;
+    };
+
+    Environment.prototype.setup = function ()
+    {
+      var deferred = $q.defer();
+
+      $rootScope.missioned(3);
+
+      try
+      {
+        $q.all(
+          [
+            Environment.prototype.domain(),
+            Environment.prototype.states(),
+            Environment.prototype.divisions()
+          ]
+        ).then(
+          function (results)
+          {
+            deferred.resolve(results);
+          }
+        );
+      }
+      catch (e)
+      {
+        Log.error('Something went wrong with setting up environment call:', e);
       }
 
       return deferred.promise;

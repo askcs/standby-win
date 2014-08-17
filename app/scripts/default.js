@@ -73,14 +73,37 @@ StandByApp.run(
     $rootScope.app = $rootScope.app ||
                      {
                        config: $config,
-                       session: '',
-                       resources: '',
+                       session: {},
+                       resources: {},
                        environment: {
                          domain: '',
-                         states: '',
-                         divisions: ''
+                         states: [],
+                         divisions: []
+                       },
+                       preloaded: {
+                         ratio: 0,
+                         missioned: 0,
+                         accomplished: 1
                        }
                      };
+
+    $rootScope.missioned = function (missioned)
+    {
+      $rootScope.app.preloaded = {
+        ratio: 0,
+        missioned: missioned,
+        accomplished: 1
+      };
+    };
+
+    $rootScope.ticked = function ()
+    {
+      $rootScope.app.preloaded.ratio = Math.ceil(
+        Math.abs(
+            $rootScope.app.preloaded.accomplished ++ * 100 /
+            $rootScope.app.preloaded.missioned)
+      );
+    };
 
     if (! _.isUndefined($rootScope.app.session) && Session.check())
     {

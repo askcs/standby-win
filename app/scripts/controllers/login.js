@@ -1,6 +1,6 @@
 StandByApp.controller(
   'login',
-  function ($scope, $location, $q, Log, Store, User, Environment, Network, Planboard)
+  function ($rootScope, $scope, $location, $q, Log, Store, User, Environment, Network, Planboard)
   {
     $scope.view = 'login';
 
@@ -49,48 +49,43 @@ StandByApp.controller(
 
               $scope.preloaded = [];
 
-              $scope.preloaded.push('Loading user resources.');
+              $scope.preloaded = 'Loading user resources.';
 
               User.resources()
                 .then(
                 function (resources)
                 {
-                  $scope.preloaded.push('Setting up environment.');
+                  $scope.preloaded = 'Setting up environment.';
 
-                  $q.all(
-                    [
-                      Environment.domain(),
-                      Environment.states(),
-                      Environment.divisions()
-                    ]
-                  ).then(
+                  Environment.setup()
+                    .then(
                     function ()
                     {
-                      $scope.preloaded.push('Getting groups list.');
+                      $scope.preloaded = 'Getting groups list.';
 
                       Network.groups()
                         .then(
                         function ()
                         {
-                          $scope.preloaded.push('Populating group members.');
+                          $scope.preloaded = 'Populating group members.';
 
                           Network.population()
                             .then(
                             function ()
                             {
-                              $scope.preloaded.push('Getting calculating group availability overviews.');
+                              $scope.preloaded = 'Getting calculating group availability overviews.';
 
                               Planboard.clusters()
                                 .then(
                                 function ()
                                 {
-                                  $scope.preloaded.push('Getting user availability.');
+                                  $scope.preloaded = 'Getting user availability.';
 
                                   Planboard.availability(resources.uuid)
                                     .then(
                                     function ()
                                     {
-                                      $scope.preloaded.push('Getting member availabilities.');
+                                      $scope.preloaded = 'Getting member availabilities.';
 
                                       Planboard.availabilities()
                                         .then(
@@ -105,11 +100,10 @@ StandByApp.controller(
                               );
                             }
                           );
-
                         }
                       );
                     }
-                  )
+                  );
                 }
               );
             }

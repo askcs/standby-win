@@ -1,6 +1,6 @@
 StandByApp.factory(
   'Planboard',
-  function ($resource, $q, $filter, Log, StandBy, Store)
+  function ($rootScope, $resource, $q, $filter, Log, StandBy, Store)
   {
     var Planboard = $resource();
 
@@ -100,12 +100,15 @@ StandByApp.factory(
     {
       var deferred = $q.defer(),
           calls = [],
-          availabilities = {};
+          availabilities = {},
+          unique = Store('network').get('unique');
+
+      $rootScope.missioned(unique.length);
 
       try
       {
         _.each(
-          Store('network').get('unique'),
+          unique,
           function (member)
           {
             calls.push(
@@ -119,6 +122,8 @@ StandByApp.factory(
               ).then(
                 function (results)
                 {
+                  $rootScope.ticked();
+
                   normalize(results);
 
                   Store('planboard').save('member.' + member.uuid, results);
@@ -210,12 +215,15 @@ StandByApp.factory(
     {
       var deferred = $q.defer(),
           calls = [],
-          clusters = {};
+          clusters = {},
+          groups = Store('network').get('groups');
+
+      $rootScope.missioned(groups.length);
 
       try
       {
         _.each(
-          Store('network').get('groups'),
+          groups,
           function (group)
           {
             calls.push(
@@ -229,6 +237,8 @@ StandByApp.factory(
               ).then(
                 function (results)
                 {
+                  $rootScope.ticked();
+
                   normalize(results);
 
                   Store('planboard').save('cluster.' + group.uuid, results);
