@@ -47,8 +47,6 @@ StandByApp.controller(
             {
               $scope.view = 'preloaded';
 
-              $scope.preloaded = [];
-
               $scope.preloaded = 'Loading user resources.';
 
               User.resources()
@@ -89,10 +87,7 @@ StandByApp.controller(
 
                                       Planboard.availabilities()
                                         .then(
-                                        function ()
-                                        {
-                                          $location.path('/dashboard');
-                                        }
+                                        function () { $location.path('/dashboard')}
                                       );
                                     }
                                   );
