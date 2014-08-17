@@ -148,6 +148,32 @@ StandByApp.factory(
       return deferred.promise;
     };
 
+    Planboard.prototype.current = function (memberID)
+    {
+      var planning = Store('planboard').get('member.' + memberID);
+
+      var current;
+
+      if (_.isUndefined(planning[0]))
+      {
+        current = { text: 'Empty planning.' }
+      }
+      else{
+        var now = Date.now();
+
+        if (planning[0].start.stamp <= now && planning[0].end.stamp >= now)
+        {
+          current = planning[0];
+        }
+        else
+        {
+          current = { text: 'There is no availability for the moment planned for this user.' }
+        }
+      }
+
+      return current;
+    };
+
     Planboard.prototype.cluster = function (groupID)
     {
       var deferred = $q.defer();

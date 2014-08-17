@@ -1,6 +1,6 @@
 StandByApp.controller(
   'dashboard',
-  function ($scope, $q, $timeout, $location, Session, Log, Store)
+  function ($scope, $q, $timeout, $location, Session, Store, Planboard)
   {
     if (! Session.check())
     {
@@ -12,22 +12,15 @@ StandByApp.controller(
       groups: {}
     };
 
-    var groups = Store('network').get('groups');
-
     _.each(
-      groups,
+      Store('network').get('groups'),
       function (group)
       {
         var availabilities = function (members)
         {
           _.each(
             members,
-            function (member)
-            {
-              member.availability = Store('planboard').get('member.' + member.uuid)[0] || 'No availability';
-
-              return member;
-            }
+            function (member) { return _.assign(member, { availability:  Planboard.current(member.uuid) }) }
           );
 
           return members;
@@ -40,5 +33,7 @@ StandByApp.controller(
         };
       }
     );
+
+    $scope.isEmptyPlanning = function (availability) { return ! _.isUndefined(availability.start) }
   }
 );

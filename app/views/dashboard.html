@@ -16,9 +16,14 @@
         <div ng-show="group.members.length > 0 ">
           <ul>
             <li ng-repeat="member in group.members">
-              <strong>{{member.name}}</strong> -
-              <!--{{member.availability.start * 1000 | date : 'short'}}-->
-              {{member.availability}}
+              <strong>{{member.name}}</strong>
+              <p>
+                <span ng-show="isEmptyPlanning(member.availability)">
+                  {{member.availability.start.short}} - {{member.availability.end.short}}
+                </span>
+                <br/>
+                {{member.availability.text}}
+              </p>
             </li>
           </ul>
         </div>
