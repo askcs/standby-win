@@ -168,38 +168,38 @@ StandByApp.run(
       }
     );
 
-    //    WinJS.Binding.optimizeBindingReferences = true;
-    //
-    //    var app = WinJS.Application;
-    //    var activation = Windows.ApplicationModel.Activation;
-    //
-    //    app.addEventListener(
-    //      'activated',
-    //      function (args)
-    //      {
-    //        if (args.detail.kind === activation.ActivationKind.launch)
-    //        {
-    //          if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated)
-    //          {
-    //            Log.print('App is initialized!');
-    //          }
-    //          else
-    //          {
-    //            Log.print('App is has been reactivated from suspension!');
-    //          }
-    //
-    //          args.setPromise(
-    //            WinJS.UI.processAll()
-    //              .then(
-    //              function () { Log.print('All UI processes are done!') }
-    //            )
-    //          );
-    //        }
-    //      }
-    //    );
-    //
-    //    app.oncheckpoint = function (args) { Log.print('App is saving data on checkpoint!') };
-    //
-    //    app.start();
+    WinJS.Binding.optimizeBindingReferences = true;
+    
+    var app = WinJS.Application;
+    var activation = Windows.ApplicationModel.Activation;
+    
+    app.addEventListener(
+      'activated',
+      function (args)
+      {
+        if (args.detail.kind === activation.ActivationKind.launch)
+        {
+          if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated)
+          {
+            Log.print('App is initialized!');
+          }
+          else
+          {
+            Log.print('App is has been reactivated from suspension!');
+          }
+    
+          args.setPromise(
+            WinJS.UI.processAll()
+              .then(
+              function () { Log.print('All UI processes are done!') }
+            )
+          );
+        }
+      }
+    );
+    
+    app.oncheckpoint = function (args) { Log.print('App is saving data on checkpoint!') };
+    
+    app.start();
   }
 );
