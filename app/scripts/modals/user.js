@@ -1,6 +1,6 @@
 StandByApp.factory(
   'User',
-  function ($resource, $q, $config, $http, Log, md5, StandBy, Session, Store)
+  function ($rootScope, $resource, $q, $config, $http, Log, md5, StandBy, Session, Store)
   {
     var User = $resource();
 
@@ -67,6 +67,8 @@ StandByApp.factory(
           function (result)
           {
             Store('user').save('resources', result);
+
+            $rootScope.app.resources = result;
 
             deferred.resolve(result);
           }

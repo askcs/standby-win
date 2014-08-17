@@ -18,16 +18,27 @@ StandByApp.controller(
       groups,
       function (group)
       {
+        var availabilities = function (members)
+        {
+          _.each(
+            members,
+            function (member)
+            {
+              member.availability = Store('planboard').get('member.' + member.uuid)[0] || 'No availability';
+
+              return member;
+            }
+          );
+
+          return members;
+        };
+
         $scope.data.groups[group.uuid] = {
           name: group.name,
           loading: true,
-          members: Store('network').get('group.' + group.uuid)
+          members: availabilities(Store('network').get('group.' + group.uuid))
         };
       }
     );
-
-    // Load member availabilities
-    // Load calc_plannings
-    // Load user availability
   }
 );

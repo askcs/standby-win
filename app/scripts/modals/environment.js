@@ -1,6 +1,6 @@
 StandByApp.factory(
   'Environment',
-  function ($resource, $q, Log, StandBy, Store)
+  function ($rootScope, $resource, $q, Log, StandBy, Store)
   {
     var Environment = $resource();
 
@@ -14,6 +14,8 @@ StandByApp.factory(
           function (result)
           {
             Store('environment').save('domain', result);
+
+            $rootScope.app.environment.domain = result;
 
             deferred.resolve(result);
           }
@@ -38,6 +40,8 @@ StandByApp.factory(
           {
             Store('environment').save('states', result);
 
+            $rootScope.app.environment.states = result;
+
             deferred.resolve(result);
           }
         );
@@ -60,6 +64,8 @@ StandByApp.factory(
           function (result)
           {
             Store('environment').save('divisions', result);
+
+            $rootScope.app.environment.divisions = result;
 
             deferred.resolve(result);
           }

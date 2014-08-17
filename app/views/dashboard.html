@@ -11,11 +11,15 @@
 
         <h3>{{group.name}}</h3>
 
-        <div>There are {{group.members.length}} members in this group.</div>
+        <p>There are {{group.members.length}} members in this group.</p>
 
         <div ng-show="group.members.length > 0 ">
           <ul>
-            <li ng-repeat="member in group.members">{{member.name}}</li>
+            <li ng-repeat="member in group.members">
+              <strong>{{member.name}}</strong> -
+              <!--{{member.availability.start * 1000 | date : 'short'}}-->
+              {{member.availability}}
+            </li>
           </ul>
         </div>
 

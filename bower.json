@@ -28,6 +28,7 @@
     "angular-route": "~1.2.22",
     "lawnchair": "~0.6.4",
     "lodash": "~2.4.1",
-    "momentjs": "~2.8.1"
+    "momentjs": "~2.8.1",
+    "angular-i18n": "~1.2.22"
   }
 }

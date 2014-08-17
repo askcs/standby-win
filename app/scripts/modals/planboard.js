@@ -1,6 +1,6 @@
 StandByApp.factory(
   'Planboard',
-  function ($resource, $q, Log, StandBy, Store)
+  function ($resource, $q, $filter, Log, StandBy, Store)
   {
     var Planboard = $resource();
 
@@ -22,6 +22,49 @@ StandByApp.factory(
               now.getDate() + 7,
               0, 0, 0) / 1000)
       }
+    };
+
+    var normalize = function (periods)
+    {
+      var stamped = function (period)
+      {
+        var stamp;
+
+        _.each(
+          ['start', 'end'],
+          function (part)
+          {
+            if (! _.isUndefined(period[part]))
+            {
+              stamp = Math.floor(period[part] * 1000);
+
+              period[part] = {
+                _stamp: period[part],
+                stamp: stamp,
+                short: $filter('date')(stamp, 'short'),
+                fullDate: $filter('date')(stamp, 'fullDate')
+              };
+            }
+          }
+        );
+      };
+
+      if (_.isArray(periods))
+      {
+        _.each(periods, function (period) { stamped(period) });
+      }
+      else
+      {
+        _.each(
+          periods,
+          function (_periods)
+          {
+            _.each(_periods, function (period) { stamped(period) });
+          }
+        );
+      }
+
+      return periods;
     };
 
     Planboard.prototype.availability = function (userID)
@@ -77,6 +120,8 @@ StandByApp.factory(
               ).then(
                 function (results)
                 {
+                  normalize(results);
+
                   Store('planboard').save('member.' + member.uuid, results);
 
                   availabilities[member.uuid] = results;
@@ -120,6 +165,8 @@ StandByApp.factory(
         ).then(
           function (result)
           {
+            normalize(result);
+
             Store('planboard').save('cluster.' + groupID, result);
 
             deferred.resolve(result);
@@ -170,6 +217,8 @@ StandByApp.factory(
           .then(
           function ()
           {
+            normalize(clusters);
+
             Store('planboard').save('clusters', clusters);
 
             deferred.resolve(clusters);
@@ -183,7 +232,6 @@ StandByApp.factory(
 
       return deferred.promise;
     };
-
 
     return new Planboard();
   });

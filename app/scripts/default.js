@@ -63,18 +63,49 @@ StandByApp.config(
 
 
 StandByApp.run(
-  function ($rootScope, $config, $location, Log, Session, Offline, $http)
+  function ($rootScope, $config, $location, Log, Session, Offline, Store)
   {
-    $rootScope.http = $http;
-
     if (Session.check())
     {
       $location.path('/dashboard');
     }
 
-    $rootScope.app = $rootScope.app || {};
+    $rootScope.app = $rootScope.app ||
+                     {
+                       config: $config,
+                       session: '',
+                       resources: '',
+                       environment: {
+                         domain: '',
+                         states: '',
+                         divisions: ''
+                       }
+                     };
 
-    $rootScope.config = $config;
+    if (! _.isUndefined($rootScope.app.session) && Session.check())
+    {
+      $rootScope.app.session = angular.fromJson(sessionStorage.getItem('session'));
+    }
+
+    if (! _.isUndefined($rootScope.app.resources) && Store('user').get('resources') != '')
+    {
+      $rootScope.app.resources = Store('user').get('resources');
+    }
+
+    if (! _.isUndefined($rootScope.app.environment.domain) && Store('environment').get('domain') != '')
+    {
+      $rootScope.app.environment.domain = Store('environment').get('domain');
+    }
+
+    if (! _.isUndefined($rootScope.app.environment.states) && Store('environment').get('states') != '')
+    {
+      $rootScope.app.environment.states = Store('environment').get('states');
+    }
+
+    if (! _.isUndefined($rootScope.app.environment.divisions) && Store('environment').get('divisions') != '')
+    {
+      $rootScope.app.environment.divisions = Store('environment').get('divisions');
+    }
 
     new Offline();
 

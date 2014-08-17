@@ -124,7 +124,7 @@ StandByApp.controller(
       // $scope.view = 'logout';
 
       _.each(
-        ['user', 'environment', 'network'],
+        ['user', 'environment', 'network', 'planboard'],
         function (table) { Store(table).nuke() }
       );
 
