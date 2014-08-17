@@ -57,10 +57,7 @@ StandByApp.factory(
       {
         _.each(
           periods,
-          function (_periods)
-          {
-            _.each(_periods, function (period) { stamped(period) });
-          }
+          function (_periods) { _.each(_periods, function (period) { stamped(period) }) }
         );
       }
 
@@ -83,6 +80,8 @@ StandByApp.factory(
         ).then(
           function (result)
           {
+            normalize(result);
+
             Store('planboard').save('availability.' + userID, result);
 
             deferred.resolve(result);
@@ -204,6 +203,8 @@ StandByApp.factory(
               ).then(
                 function (results)
                 {
+                  normalize(results);
+
                   Store('planboard').save('cluster.' + group.uuid, results);
 
                   clusters[group.uuid] = results;
@@ -217,8 +218,6 @@ StandByApp.factory(
           .then(
           function ()
           {
-            normalize(clusters);
-
             Store('planboard').save('clusters', clusters);
 
             deferred.resolve(clusters);
